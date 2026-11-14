@@ -14,21 +14,16 @@ const AGENDAR = linkWhatsApp("Olá, Maira! Vim pelo site e quero agendar uma aul
 export function Cabecalho() {
   const caminho = usePathname();
   const [aberto, setAberto] = useState(false);
-  const [escondido, setEscondido] = useState(false);
   const [rolou, setRolou] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
 
-  // Some ao descer, volta ao subir (como uma onda)
+  // Acompanha a rolagem de forma fixa no topo, ganhando fundo translúcido ao rolar
   useEffect(() => {
-    let ultimo = window.scrollY;
     const onScroll = () => {
-      const y = window.scrollY;
-      setRolou(y > 40);
-      if (Math.abs(y - ultimo) < 6) return;
-      setEscondido(y > ultimo && y > 240);
-      ultimo = y;
+      setRolou(window.scrollY > 24);
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -79,7 +74,6 @@ export function Cabecalho() {
     <>
       <header
         className={styles.cabecalho}
-        data-escondido={escondido && !aberto}
         data-rolou={rolou}
         data-aberto={aberto}
       >

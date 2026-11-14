@@ -13,14 +13,11 @@
 }
 
 .cabecalho[data-rolou="true"] {
-  padding-block: 0.8rem;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  padding-block: 0.75rem;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-}
-
-.cabecalho[data-escondido="true"] {
-  transform: translateY(-110%);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--fg) 10%, transparent);
 }
 
 .cabecalho[data-aberto="true"] {
@@ -91,7 +88,20 @@
 }
 
 @media (max-width: 560px) {
+  .cabecalho {
+    gap: 0.75rem;
+  }
+
+  .acoesDireita {
+    gap: 0.65rem;
+  }
+
   .ctaCabecalho {
+    padding: 0.5em 0.9em;
+    font-size: 0.76rem;
+  }
+
+  .ctaCabecalho :global(.seta) {
     display: none;
   }
 }
