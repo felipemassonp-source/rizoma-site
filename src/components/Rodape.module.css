@@ -1,0 +1,108 @@
+.rodape {
+  position: relative;
+  padding-top: clamp(8rem, 18vw, 14rem);
+  padding-bottom: 2rem;
+  color: var(--creme);
+  overflow: hidden;
+}
+
+.ondas {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: clamp(5rem, 12vw, 9rem);
+  color: var(--terracota);
+  opacity: 0.9;
+}
+
+.grade {
+  display: grid;
+  gap: 3rem 2rem;
+  grid-template-columns: 1fr;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+@media (min-width: 760px) {
+  .grade {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  }
+}
+
+.frase {
+  font-size: var(--t-h3);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.frase span {
+  color: var(--terracota);
+}
+
+.rotulo {
+  margin-bottom: 1rem;
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.coluna ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.coluna a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.6s var(--ease-sai);
+}
+
+.coluna a:hover {
+  background-size: 100% 1px;
+}
+
+.coluna address {
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.mapa {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: var(--terracota);
+  font-weight: 600;
+}
+
+.logoGrande {
+  width: 100%;
+  height: auto;
+  color: var(--terracota);
+}
+
+.base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--creme) 22%, transparent);
+  font-size: var(--t-mini);
+  opacity: 0.7;
+}
+
+.fraseBloco {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+
+.sombra {
+  width: auto;
+  height: 7rem;
+  color: var(--terracota);
+  justify-self: start;
+}

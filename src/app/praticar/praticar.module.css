@@ -1,0 +1,229 @@
+/* Etapas da aula: cada tempo tem um boneco que completa o gesto */
+.etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+}
+
+.etapaGesto {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.etapaBoneco {
+  width: 100%;
+  height: clamp(110px, 12vw, 160px);
+  margin-bottom: 0.75rem;
+  padding: 1.1rem 1rem 0;
+  border-radius: 24px 24px 0 0;
+  border-bottom: 2px solid var(--terracota);
+  background: color-mix(in srgb, var(--creme) 5%, transparent);
+  color: var(--creme);
+  transition: background-color 0.6s var(--ease-sai), color 0.6s var(--ease-sai);
+}
+
+.etapaGesto:hover .etapaBoneco {
+  background: color-mix(in srgb, var(--terracota) 18%, transparent);
+  color: var(--terracota);
+}
+
+.etapaGesto strong {
+  font-size: var(--t-h3);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.etapaGesto > span:last-child {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.etapaSans {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--terracota);
+}
+
+@media (min-width: 900px) {
+  .etapas {
+    grid-template-columns: repeat(5, 1fr);
+    align-items: start;
+    gap: 1.25rem;
+  }
+}
+
+/* Modalidades */
+.modalidades {
+  display: grid;
+  gap: clamp(4rem, 9vw, 8rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.modalidade {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 900px) {
+  .modalidade {
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+  }
+
+  .modalidade[data-invertida="true"] .modalidadeFoto {
+    order: 2;
+  }
+}
+
+.modalidadeFoto {
+  aspect-ratio: 5 / 4;
+  border-radius: 28px;
+}
+
+.modalidadeFoto {
+  width: 100%;
+}
+
+.modalidade[data-invertida="true"] .modalidadeFoto {
+  aspect-ratio: 4 / 4.4;
+}
+
+.modalidadeTexto {
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+  line-height: 1.65;
+}
+
+.modalidadeTexto h2 {
+  font-size: var(--t-h2);
+}
+
+.modalidadeN {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--terracota);
+}
+
+/* Planos */
+.planos {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .planos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .planos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.plano {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 1.75rem;
+  border-radius: 28px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.plano h3 {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.planoPreco {
+  font-size: clamp(2rem, 1.4rem + 1.6vw, 3.2rem);
+  white-space: nowrap;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.planoPreco small {
+  font-size: 0.35em;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.plano :global(.botao) {
+  justify-self: start;
+  margin-top: 0.5rem;
+}
+
+.plano[data-destaque="true"] {
+  background: var(--vinho);
+  color: var(--creme);
+  box-shadow: none;
+}
+
+.plano[data-destaque="true"] :global(.botao) {
+  --b-bg: var(--creme);
+  --b-fg: var(--vinho);
+}
+
+.planoSelo {
+  justify-self: start;
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  background: var(--terracota);
+  color: var(--creme);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Perguntas */
+.faq details {
+  border-bottom: 1.5px solid color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.faq details:first-child {
+  border-top: 1.5px solid color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.4rem;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  color: var(--terracota);
+  transition: transform 0.5s var(--ease-sai);
+}
+
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq details p {
+  padding-bottom: 1.5rem;
+  max-width: 50ch;
+  line-height: 1.6;
+}

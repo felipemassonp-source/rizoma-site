@@ -1,0 +1,57 @@
+.sombra {
+  display: block;
+  aspect-ratio: var(--proporcao);
+  overflow: hidden;
+  /* a "linha do horizonte": a sombra nasce de trás dela */
+  clip-path: inset(-10% -10% 0 -10%);
+}
+
+.forma {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center bottom;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center bottom;
+  transform: translateY(102%);
+  filter: blur(6px);
+  opacity: 0;
+  transform-origin: 50% 100%;
+  transition: transform 1.8s var(--ease-respira) var(--atraso, 0s), filter 1.6s var(--ease-sai) var(--atraso, 0s),
+    opacity 1.2s var(--ease-sai) var(--atraso, 0s);
+}
+
+.sombra[data-visivel="true"] .forma {
+  transform: translateY(0);
+  filter: blur(0);
+  opacity: 1;
+  animation: respira 10s var(--ease-respira) calc(var(--atraso, 0s) + 1.8s) infinite;
+}
+
+/* inspira (4s) e expira (6s): quase imperceptível */
+@keyframes respira {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(0) scale(1.012, 1.025);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forma {
+    transform: none;
+    filter: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  .sombra[data-visivel="true"] .forma {
+    animation: none;
+  }
+}

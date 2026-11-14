@@ -1,33 +1,84 @@
+/* ==========================================================================
+   Rizoma — tokens da marca (Manual da Marca, Casa14)
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Paleta oficial */
+  --creme: #f0dabb;
+  --terracota: #d73d19;
+  --vinho: #561111;
+
+  /* Variações de apoio (derivadas da paleta) */
+  --creme-claro: #f8ecda;
+  --vinho-profundo: #3a0b0b;
+  --terracota-suave: #e7a17f;
+
+  /* Tema corrente — trocado pela rolagem (ver TemaRolagem) */
+  --bg: var(--creme);
+  --fg: var(--vinho);
+  --destaque: var(--terracota);
+
+  /* Ritmo de respiração: tudo no site se move nesse tempo */
+  --inspira: 4s;
+  --expira: 6s;
+  --ease-respira: cubic-bezier(0.45, 0, 0.2, 1);
+  --ease-sai: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Tipografia */
+  --fonte-texto: var(--font-urbanist), "Sofia Pro", system-ui, sans-serif;
+  --t-mini: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --t-corpo: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+  --t-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  --t-h3: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  --t-h2: clamp(2.2rem, 1.6rem + 3vw, 4.5rem);
+  --t-h1: clamp(2.6rem, 1rem + 6vw, 7.5rem);
+
+  /* Espaço */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --secao: clamp(5rem, 3rem + 9vw, 11rem);
+  --largura: 1320px;
+  --raio: 999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
   margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--fonte-texto);
+  font-size: var(--t-corpo);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  transition: background-color 1.2s var(--ease-respira), color 1.2s var(--ease-respira);
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -35,8 +86,202 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--terracota);
+  color: var(--creme);
+}
+
+:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Utilitários
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sobretitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.sobretitulo::before {
+  content: "";
+  width: 2.5em;
+  height: 2px;
+  background: currentColor;
+}
+
+.visualmente-oculto {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Botões */
+.botao {
+  --b-bg: var(--fg);
+  --b-fg: var(--bg);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 1em 1.6em;
+  border-radius: var(--raio);
+  background: var(--b-bg);
+  color: var(--b-fg);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.6s var(--ease-sai), color 0.6s var(--ease-sai);
+}
+
+.botao::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--terracota);
+  border-radius: inherit;
+  transform: scale(0);
+  transition: transform 0.7s var(--ease-sai);
+}
+
+.botao:hover::before,
+.botao:focus-visible::before {
+  transform: scale(1.05);
+}
+
+.botao:hover,
+.botao:focus-visible {
+  color: var(--creme);
+}
+
+.botao--contorno {
+  --b-bg: transparent;
+  --b-fg: var(--fg);
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.botao .seta {
+  transition: transform 0.6s var(--ease-sai);
+}
+
+.botao:hover .seta {
+  transform: translateX(4px);
+}
+
+/* Aviso de conteúdo pendente (visível de propósito) */
+.pendente {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  padding: 0.7em 1em;
+  border: 1.5px dashed currentColor;
+  border-radius: 12px;
+  font-size: var(--t-mini);
+  line-height: 1.45;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.pendente strong {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
+}
+
+/* Cursor vivo */
+.cursor-vivo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--fg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s, border-color 1.2s var(--ease-respira), background-color 0.5s var(--ease-sai);
+}
+
+.cursor-vivo::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--fg);
+  opacity: 0;
+  animation: cursor-respira 10s var(--ease-respira) infinite;
+}
+
+.cursor-vivo[data-ativo="true"] {
+  background: color-mix(in srgb, var(--destaque) 35%, transparent);
+  border-color: var(--destaque);
+  scale: 3;
+  transition: opacity 0.4s, scale 0.6s var(--ease-sai), background-color 0.5s var(--ease-sai);
+}
+
+.cursor-vivo {
+  scale: 1;
+  transition: opacity 0.4s, scale 0.6s var(--ease-sai), border-color 1.2s var(--ease-respira), background-color 0.5s var(--ease-sai);
+}
+
+@keyframes cursor-respira {
+  0%, 100% { transform: scale(1); opacity: 0; }
+  40% { transform: scale(2.6); opacity: 0.35; }
 }

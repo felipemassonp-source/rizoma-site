@@ -1,0 +1,208 @@
+/* Estilos compartilhados das páginas internas */
+
+.secao {
+  position: relative;
+  padding-block: var(--secao);
+  overflow: clip;
+}
+
+.h2 {
+  font-size: var(--t-h2);
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  max-width: 44ch;
+}
+
+.corpo {
+  display: grid;
+  gap: 1.25rem;
+  font-size: var(--t-corpo);
+  line-height: 1.7;
+  max-width: 58ch;
+}
+
+.duas {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+@media (min-width: 900px) {
+  .duas {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .duasFim {
+    align-items: end;
+  }
+}
+
+.topoSecao {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+@media (min-width: 900px) {
+  .topoSecao {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+}
+
+/* Lista em linhas (princípios, inclui, etc.) */
+.linhasLista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1.5px solid color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.linhasLista li {
+  display: grid;
+  gap: 0.5rem 2rem;
+  padding-block: 1.5rem;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+@media (min-width: 760px) {
+  .linhasLista li {
+    grid-template-columns: 3rem 1fr 1.2fr;
+    align-items: baseline;
+  }
+}
+
+.linhasLista .n {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--destaque);
+}
+
+.linhasLista strong {
+  font-size: var(--t-h3);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+/* CTA final */
+.cta {
+  display: grid;
+  justify-items: start;
+  gap: 2rem;
+}
+
+.ctaTitulo {
+  font-size: var(--t-h1);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  max-width: 13ch;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.botaoClaro {
+  --b-bg: var(--creme);
+  --b-fg: var(--vinho);
+}
+
+.botaoClaro::before {
+  background: var(--vinho) !important;
+}
+
+/* Conhecer */
+.citacao {
+  margin: 0;
+  font-size: var(--t-h2);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.citacao span {
+  color: var(--destaque);
+}
+
+.retratos {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.retratoA {
+  width: 100%;
+}
+
+.retratoB {
+  width: 78%;
+  justify-self: center;
+}
+
+.credenciais {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.credenciais li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 22%, transparent);
+  font-size: 1rem;
+}
+
+.credenciais li span:first-child {
+  font-weight: 600;
+}
+
+.conceitoLinhas {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 30%;
+  color: var(--terracota);
+  opacity: 0.4;
+}
+
+.galeria {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 760px) {
+  .galeria {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+
+  .galeria > :first-child {
+    grid-row: span 2;
+    min-height: 460px;
+  }
+}
+
+.acesso {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.acesso li::before {
+  content: "— ";
+  color: var(--destaque);
+}

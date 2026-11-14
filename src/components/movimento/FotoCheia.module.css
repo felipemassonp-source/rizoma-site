@@ -1,0 +1,31 @@
+.cheia {
+  position: relative;
+  min-height: 110svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  color: var(--creme);
+}
+
+.janela {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.imagem {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.veu {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(58 11 11 / 0.05) 30%, rgb(58 11 11 / 0.75) 100%);
+}
+
+.conteudo {
+  position: relative;
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}

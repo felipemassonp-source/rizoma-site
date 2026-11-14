@@ -1,0 +1,221 @@
+.cabecalho {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem var(--gutter);
+  color: var(--fg);
+  transition: transform 0.9s var(--ease-respira), color 1.2s var(--ease-respira),
+    background-color 1.2s var(--ease-respira), padding 0.9s var(--ease-respira);
+}
+
+.cabecalho[data-rolou="true"] {
+  padding-block: 0.8rem;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.cabecalho[data-escondido="true"] {
+  transform: translateY(-110%);
+}
+
+.cabecalho[data-aberto="true"] {
+  color: var(--creme);
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.marca {
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: clamp(104px, 9vw, 132px);
+  height: auto;
+}
+
+.navDesktop {
+  display: none;
+  gap: clamp(1rem, 2vw, 2.25rem);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.navDesktop a {
+  position: relative;
+  padding-block: 0.3em;
+}
+
+.navDesktop a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.7s var(--ease-sai);
+}
+
+.navDesktop a:hover::after,
+.navDesktop a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.botaoMenu {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.icone {
+  width: 32px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  overflow: visible;
+}
+
+.icone path {
+  transition: d 0.8s var(--ease-respira);
+}
+
+.botaoMenu:hover .icone path:nth-child(2) {
+  d: path("M0 10 L8 8 L16 14 L24 8 H32");
+}
+
+.botaoMenu:hover .icone path:nth-child(3) {
+  d: path("M0 18 L7 15 L16 20 L25 15 H32");
+}
+
+.botaoMenu[aria-expanded="true"] .icone path:nth-child(1) {
+  d: path("M4 2 L28 18");
+}
+
+.botaoMenu[aria-expanded="true"] .icone path:nth-child(2) {
+  d: path("M16 10 L16 10 L16 10 L16 10 H16");
+}
+
+.botaoMenu[aria-expanded="true"] .icone path:nth-child(3) {
+  d: path("M4 18 L9 14 L16 10 L23 6 L28 2");
+}
+
+@media (min-width: 1100px) {
+  .navDesktop {
+    display: flex;
+  }
+
+  .botaoMenu {
+    display: none;
+  }
+}
+
+/* ---------- Menu em tela cheia ---------- */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  visibility: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 6.5rem var(--gutter) 2rem;
+  background: var(--vinho);
+  color: var(--creme);
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+}
+
+.linhas {
+  position: absolute;
+  top: 0;
+  right: -2%;
+  width: min(52vw, 420px);
+  height: 100%;
+  fill: none;
+  stroke: var(--terracota);
+  stroke-width: 7;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.linha {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.lista {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15em;
+  font-size: clamp(2rem, min(7.5vh, 11vw), 4.5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.link {
+  display: block;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6em;
+  transition: color 0.6s var(--ease-sai), transform 0.8s var(--ease-sai);
+}
+
+.numero {
+  font-size: 0.26em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+  transform: translateY(-1.4em);
+}
+
+.link:hover .item,
+.link[aria-current="page"] .item {
+  color: var(--terracota);
+}
+
+.rodapeMenu {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  font-size: 0.9rem;
+  opacity: 0;
+}
+
+.rodapeMenu a {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+}
+
+@media (min-width: 1100px) {
+  .menu {
+    display: none;
+  }
+}

@@ -1,0 +1,58 @@
+.moldura {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.camada {
+  position: absolute;
+  inset: -6% 0;
+}
+
+.imagem {
+  object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.faixas {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.faixa {
+  flex: 1;
+  margin-block: -0.5px;
+  background: var(--bg);
+  transition: background-color 1.2s var(--ease-respira);
+}
+
+/* ---------- recortes da marca ---------- */
+.moldura[data-recorte="arco"] {
+  border-radius: 999px 999px 0 0;
+}
+
+.moldura[data-recorte="arcoInvertido"] {
+  border-radius: 0 0 999px 999px;
+}
+
+/* topo em montanha, como as dobras do símbolo */
+.moldura[data-recorte="montanha"] {
+  border-radius: 0 0 24px 24px;
+  clip-path: polygon(0 9%, 26% 9%, 37% 1.5%, 50% 13%, 63% 1.5%, 74% 9%, 100% 9%, 100% 100%, 0 100%);
+}
+
+/* o sol, e o "O" do logotipo */
+.moldura[data-recorte="circulo"] {
+  aspect-ratio: 1 !important;
+  border-radius: 50%;
+}
+
+/* o logotipo na versão vertical: uma faixa alta */
+.moldura[data-recorte="vertical"] {
+  aspect-ratio: 2 / 4.2 !important;
+  border-radius: 999px;
+}

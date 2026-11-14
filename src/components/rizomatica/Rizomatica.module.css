@@ -1,0 +1,479 @@
+/* ---------- página da Rizomática ---------- */
+.abertura {
+  position: relative;
+  padding: 9rem 0 4rem;
+  overflow: hidden;
+}
+
+.aberturaLinhas {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 32%;
+  color: var(--terracota);
+  opacity: 0.45;
+}
+
+.aberturaGrade {
+  position: relative;
+  padding-top: 0;
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+}
+
+@media (min-width: 900px) {
+  .aberturaGrade {
+    grid-template-columns: 1.4fr 0.6fr;
+  }
+}
+
+.marca {
+  font-size: clamp(3.2rem, 1rem + 11vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+.marca [data-linha] {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.marca [data-linha] > span {
+  display: block;
+}
+
+.aberturaTexto {
+  display: grid;
+  gap: 1rem;
+  font-size: var(--t-lead);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+
+.aberturaSombra {
+  width: min(100%, 240px) !important;
+  justify-self: start !important;
+  margin-bottom: 0.5rem;
+}
+
+.ritmo {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--terracota);
+}
+
+.lista {
+  padding-bottom: var(--secao);
+}
+
+.temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.temas button {
+  padding: 0.55em 1.1em;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 30%, transparent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.temas button[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.meta {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.selo {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.3em 0.9em;
+  border: 1.5px dashed currentColor;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.ler {
+  font-weight: 600;
+  color: var(--terracota);
+}
+
+.destaque {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+@media (min-width: 900px) {
+  .destaque {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4vw;
+  }
+}
+
+.destaqueCapa {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 0 0 999px 999px;
+  overflow: hidden;
+}
+
+.destaqueCapa img {
+  object-fit: cover;
+  transition: transform 1.8s var(--ease-sai);
+}
+
+.destaque:hover .destaqueCapa img {
+  transform: scale(1.04);
+}
+
+.destaqueTexto {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.destaqueTexto h2 {
+  font-size: var(--t-h2);
+}
+
+.destaqueTexto p {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+}
+
+.capas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 760px) {
+  .capas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.capa {
+  position: relative;
+  display: grid;
+  align-content: end;
+  gap: 0.9rem;
+  min-height: clamp(380px, 46vw, 520px);
+  padding: 1.75rem;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: transform 0.9s var(--ease-sai);
+}
+
+.capa:hover {
+  transform: translateY(-8px) rotate(-0.5deg);
+}
+
+.capaSimbolo {
+  position: absolute;
+  top: 1.75rem;
+  left: 1.75rem;
+  width: 52px;
+  opacity: 0.85;
+  transition: transform 1.2s var(--ease-respira);
+}
+
+.capa:hover .capaSimbolo {
+  transform: scaleY(1.25);
+}
+
+.capa h3 {
+  font-size: var(--t-h3);
+  line-height: 1.08;
+}
+
+.capa p {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.capaRodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  font-size: 0.82rem;
+}
+
+/* ---------- newsletter ---------- */
+.newsSecao {
+  padding-bottom: var(--secao);
+}
+
+.news {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  border-radius: 32px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
+.news[data-escuro="true"] {
+  background: var(--vinho);
+  color: var(--creme);
+  box-shadow: none;
+}
+
+@media (min-width: 900px) {
+  .news {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.news h2 {
+  font-size: var(--t-h2);
+  margin-bottom: 0.75rem;
+}
+
+.newsForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.newsForm input {
+  flex: 1 1 220px;
+  padding: 1em 1.3em;
+  border: 1.5px solid color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.newsForm input::placeholder {
+  color: inherit;
+  opacity: 0.6;
+}
+
+.news[data-escuro="true"] :global(.botao) {
+  --b-bg: var(--creme);
+  --b-fg: var(--vinho);
+}
+
+.newsOk {
+  font-size: var(--t-lead);
+}
+
+.newsOk small {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ---------- artigo ---------- */
+.artigo {
+  padding-bottom: var(--secao);
+}
+
+.progresso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 16px;
+  color: var(--terracota);
+  pointer-events: none;
+}
+
+.progresso svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.progresso path {
+  stroke-dasharray: 1;
+}
+
+.ferramentas {
+  position: fixed;
+  right: var(--gutter);
+  bottom: 1.25rem;
+  z-index: 40;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: var(--vinho);
+  color: var(--creme);
+}
+
+.ferramentas button {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.ferramentas button span {
+  display: inline;
+  font-size: 1.25em;
+}
+
+.ferramentas button[aria-pressed="true"] {
+  background: var(--terracota);
+}
+
+.artigoTopo {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  padding-top: 9rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.voltar {
+  font-weight: 600;
+  color: var(--terracota);
+}
+
+.artigoTopo h1 {
+  max-width: 16ch;
+  font-size: var(--t-h1);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.artigoResumo {
+  max-width: 44ch;
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.artigoCapa > div {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  border-radius: 999px 999px 32px 32px;
+  overflow: hidden;
+}
+
+.artigoCapa img {
+  object-fit: cover;
+}
+
+.corpoTexto {
+  width: 100%;
+  max-width: calc(38rem + 2 * var(--gutter));
+  margin: clamp(3rem, 6vw, 5rem) auto;
+  padding-inline: var(--gutter);
+  font-size: clamp(1.12rem, 1.05rem + 0.3vw, 1.3rem);
+  line-height: 1.8;
+  transition: font-size 0.5s var(--ease-sai);
+}
+
+.corpoTexto[data-grande="true"] {
+  font-size: clamp(1.3rem, 1.2rem + 0.4vw, 1.5rem);
+}
+
+.corpoTexto p + p {
+  margin-top: 1.4em;
+}
+
+.primeiro::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  font-size: 3.6em;
+  line-height: 0.8;
+  font-weight: 600;
+  color: var(--terracota);
+}
+
+.corpoTexto h2 {
+  margin: 2.2em 0 0.8em;
+  font-size: 1.5em;
+  line-height: 1.2;
+}
+
+.corpoTexto blockquote {
+  margin: 1.8em -0.5em;
+  padding: 0.2em 0 0.2em 0.9em;
+  border-left: 3px solid var(--terracota);
+  font-size: 1.45em;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--terracota);
+}
+
+.assinatura {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1.5px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.assinatura img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.assinatura div {
+  display: grid;
+  flex: 1;
+}
+
+.assinaturaSimbolo {
+  width: 40px;
+  color: var(--terracota);
+}
+
+.proximo {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: clamp(1.75rem, 5vw, 3rem);
+  border-radius: 32px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 25%, transparent);
+  transition: background-color 0.6s var(--ease-sai);
+}
+
+.proximo:hover {
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+}
+
+.proximo strong {
+  font-size: var(--t-h2);
+  font-weight: 500;
+  line-height: 1.05;
+}

@@ -1,0 +1,77 @@
+.palco {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: min(100%, 440px);
+  aspect-ratio: 1;
+}
+
+/* o sol: abre devagar, como numa inspiração */
+.sol {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 86%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--destaque);
+  opacity: 0.9;
+  transform: translate(-50%, 8%) scale(0.4);
+  animation: nasce 2.2s var(--ease-respira) 0.2s both;
+}
+
+@keyframes nasce {
+  from {
+    transform: translate(-50%, 30%) scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 8%) scale(1);
+    opacity: 0.9;
+  }
+}
+
+.sombra {
+  position: relative;
+  max-width: 82%;
+  max-height: 88%;
+  width: 100%;
+  color: var(--fg);
+}
+
+/* a linha do horizonte, de onde a sombra nasce */
+.horizonte {
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  bottom: 0;
+  height: 2px;
+  background: var(--fg);
+  transform-origin: left;
+  animation: traço 1.6s var(--ease-respira) both;
+}
+
+@keyframes traço {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 899px) {
+  .palco {
+    width: min(70%, 300px);
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol,
+  .horizonte {
+    animation: none;
+    transform: translate(-50%, 8%);
+  }
+
+  .horizonte {
+    transform: none;
+  }
+}

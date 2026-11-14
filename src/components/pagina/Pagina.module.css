@@ -1,0 +1,144 @@
+.cabeca {
+  position: relative;
+  min-height: 82svh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 8rem;
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+  overflow: hidden;
+}
+
+.linhas {
+  position: absolute;
+  inset: 18% 0 auto 0;
+  height: 46%;
+  color: var(--destaque);
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(90deg, rgb(0 0 0 / 0.25) 0 35%, #000 65%);
+  mask-image: linear-gradient(90deg, rgb(0 0 0 / 0.25) 0 35%, #000 65%);
+}
+
+.grade {
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+  align-items: end;
+}
+
+@media (min-width: 900px) {
+  .cabeca[data-com-foto="true"] .grade {
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+}
+
+.texto {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.titulo {
+  display: grid;
+  font-size: var(--t-h1);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.titulo [data-linha] {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.titulo [data-linha] > span {
+  display: block;
+}
+
+.lead {
+  max-width: 46ch;
+  font-size: var(--t-lead);
+  line-height: 1.45;
+}
+
+.foto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 420px;
+  width: 100%;
+  justify-self: end;
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+.foto img {
+  object-fit: cover;
+}
+
+@media (max-width: 899px) {
+  .foto {
+    justify-self: stretch;
+    max-width: none;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.falta {
+  margin: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.75rem;
+  min-height: 220px;
+  padding: 1.5rem;
+  border: 1.5px dashed currentColor;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  text-align: center;
+  opacity: 0.85;
+}
+
+.faltaIcone {
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.falta figcaption {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.falta strong {
+  font-size: var(--t-mini);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  padding: 0.35em 0.9em;
+  border: 1.5px dashed currentColor;
+  border-radius: 999px;
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+}
+
+.selo::before {
+  content: "✎";
+}
+
+.sombra {
+  justify-self: end;
+}
+
+@media (max-width: 899px) {
+  .sombra {
+    justify-self: start;
+  }
+}

@@ -1,0 +1,18 @@
+.fatiada {
+  position: relative;
+  overflow: hidden;
+}
+
+.faixa {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.recorte {
+  position: absolute;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,141 @@
+.fatos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  margin: 1rem 0 0;
+}
+
+.fatos dt {
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--terracota);
+}
+
+.fatos dd {
+  margin: 0.4rem 0 0;
+  max-width: 14ch;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Pilha de módulos: cada cartão gruda no topo e o próximo se assenta por cima */
+.pilha {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.modulo {
+  position: sticky;
+  top: calc(6rem + var(--i) * 1.4rem);
+  display: grid;
+  gap: 1rem;
+  min-height: clamp(260px, 42vh, 380px);
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+  border-radius: 32px;
+  box-shadow: 0 -12px 40px rgb(58 11 11 / 0.12);
+}
+
+@media (min-width: 900px) {
+  .modulo {
+    grid-template-columns: 1fr 1.4fr;
+    align-content: start;
+  }
+
+  .modulo p {
+    grid-column: 2;
+  }
+}
+
+.moduloN {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.modulo h3 {
+  font-size: var(--t-h2);
+  max-width: 16ch;
+}
+
+.modulo p {
+  font-size: var(--t-lead);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+
+/* Investimento */
+.precos {
+  display: grid;
+  margin-top: 1.5rem;
+}
+
+.preco {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.preco strong {
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.preco:first-child strong {
+  color: var(--terracota);
+}
+
+/* Calendário */
+.calendario {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.calendario ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 760px) {
+  .calendario ol {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.calendario li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1.1rem;
+  border-radius: 20px;
+  border: 1.5px dashed color-mix(in srgb, var(--fg) 40%, transparent);
+  opacity: 0.75;
+}
+
+.calendario li span {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--terracota);
+}
+
+.calendario li strong {
+  font-size: var(--t-h3);
+  font-weight: 600;
+}
+
+.calendario li small {
+  font-size: 0.8rem;
+}

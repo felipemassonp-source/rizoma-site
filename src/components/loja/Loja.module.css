@@ -1,0 +1,604 @@
+/* ---------- barra ---------- */
+.barra {
+  position: sticky;
+  top: 5rem;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.categorias button {
+  padding: 0.55em 1.1em;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.5s var(--ease-sai), color 0.5s var(--ease-sai);
+}
+
+.categorias button[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.botaoSacola {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6em 0.8em 0.6em 1.2em;
+  border-radius: 999px;
+  background: var(--vinho);
+  color: var(--creme);
+  font-weight: 600;
+}
+
+.contador {
+  display: grid;
+  place-items: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: var(--terracota);
+  font-size: 0.8rem;
+}
+
+/* ---------- vitrine ---------- */
+.vitrine {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 1000px) {
+  .vitrine {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card[data-largo="true"] {
+    grid-column: span 2;
+  }
+
+  .card[data-largo="true"] .cardFoto {
+    aspect-ratio: auto;
+    height: calc(100% - 7rem);
+    min-height: 360px;
+  }
+}
+
+.cardBotao {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.cardBotao:disabled {
+  cursor: not-allowed;
+}
+
+.cardFoto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+
+.cardFoto img {
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-sai);
+}
+
+.cardBotao:hover .cardFoto img {
+  transform: scale(1.05);
+}
+
+.cardBotao:disabled .cardFoto {
+  filter: grayscale(0.7);
+  opacity: 0.6;
+}
+
+.seloExemplo,
+.esgotado {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  background: var(--creme);
+  color: var(--vinho);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.seloExemplo::before {
+  content: "✎ ";
+}
+
+.esgotado {
+  left: auto;
+  right: 0.8rem;
+  background: var(--vinho);
+  color: var(--creme);
+}
+
+.cardInfo {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 0.25rem 0.5rem;
+}
+
+.cardCategoria {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.cardInfo h3 {
+  font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.6rem);
+}
+
+.cardRodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardPreco {
+  font-weight: 600;
+}
+
+.cardCores {
+  display: flex;
+  gap: 4px;
+}
+
+.cardCores span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
+}
+
+/* sem foto */
+.semFoto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  transition: background-color 0.8s var(--ease-respira);
+}
+
+.semFotoSimbolo {
+  width: clamp(56px, 30%, 140px);
+}
+
+.semFoto span {
+  padding: 0.3em 0.8em;
+  border: 1.5px dashed currentColor;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ---------- detalhe ---------- */
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: clamp(0rem, 3vw, 2rem);
+  background: rgb(58 11 11 / 0.55);
+  backdrop-filter: blur(6px);
+  animation: aparece 0.5s var(--ease-sai);
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+.detalhe {
+  position: relative;
+  display: grid;
+  width: min(1040px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  border-radius: 28px;
+  background: var(--creme-claro);
+  color: var(--vinho);
+  animation: sobe 0.7s var(--ease-sai);
+}
+
+@keyframes sobe {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 860px) {
+  .detalhe {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    max-height: min(90svh, 760px);
+  }
+
+  .detalhe .detalheFoto {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 859px) {
+  .fundo {
+    align-items: end;
+    padding: 0;
+  }
+
+  .detalhe {
+    max-height: 92svh;
+    border-radius: 28px 28px 0 0;
+  }
+}
+
+.fechar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--creme);
+  color: var(--vinho);
+}
+
+.detalheFoto {
+  position: relative;
+  min-height: 320px;
+  aspect-ratio: 1;
+}
+
+.detalheFoto img {
+  object-fit: cover;
+}
+
+.detalheInfo {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.detalheInfo h2 {
+  font-size: var(--t-h2);
+}
+
+.detalhePreco {
+  font-size: var(--t-h3);
+  font-weight: 600;
+  color: var(--terracota);
+}
+
+.aviso {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.opcao {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.opcao legend {
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.cores {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.cores button {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
+  transition: transform 0.5s var(--ease-sai), box-shadow 0.5s var(--ease-sai);
+}
+
+.cores button[aria-pressed="true"] {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px var(--creme-claro), 0 0 0 5px var(--vinho);
+}
+
+.tamanhos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tamanhos button {
+  min-width: 3rem;
+  padding: 0.6em 1em;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--vinho) 35%, transparent);
+  font-weight: 600;
+}
+
+.tamanhos button[aria-pressed="true"] {
+  background: var(--vinho);
+  color: var(--creme);
+}
+
+.comprar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.comprar :global(.botao) {
+  --b-bg: var(--vinho);
+  --b-fg: var(--creme);
+}
+
+.comprar :global(.botao):disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.qtd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.qtd button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.qtd span {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.nota {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ---------- sacola ---------- */
+.sacolaFundo {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgb(58 11 11 / 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s var(--ease-sai), visibility 0.6s;
+}
+
+.sacolaFundo[data-aberta="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sacola {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: min(460px, 100%);
+  background: var(--creme-claro);
+  color: var(--vinho);
+  transform: translateX(100%);
+  transition: transform 0.8s var(--ease-respira);
+}
+
+.sacolaFundo[data-aberta="true"] .sacola {
+  transform: translateX(0);
+}
+
+.sacolaTopo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--vinho) 15%, transparent);
+}
+
+.sacolaTopo h2 {
+  font-size: var(--t-h3);
+}
+
+.vazia {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.vaziaSimbolo {
+  width: 72px;
+  color: var(--terracota);
+}
+
+.itens {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  overflow: auto;
+}
+
+.itens li {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding-block: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--vinho) 12%, transparent);
+}
+
+.itemFoto {
+  position: relative;
+  width: 72px;
+  height: 88px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.itemFoto img {
+  object-fit: cover;
+}
+
+.itemFoto span {
+  display: none;
+}
+
+.itemInfo {
+  display: grid;
+  gap: 0.3rem;
+  justify-items: start;
+  font-size: 0.9rem;
+}
+
+.itemInfo strong {
+  font-size: 1rem;
+}
+
+.itemPreco {
+  font-weight: 600;
+}
+
+.sacolaRodape {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--vinho) 15%, transparent);
+}
+
+.sacolaRodape :global(.botao) {
+  --b-bg: var(--vinho);
+  --b-fg: var(--creme);
+  justify-content: center;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.total strong {
+  font-size: var(--t-h3);
+}
+
+.voltar {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 0;
+  overflow: auto;
+}
+
+.form > label,
+.form legend {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.form input:not([type="radio"]),
+.form textarea {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.8em 1em;
+  border: 1.5px solid color-mix(in srgb, var(--vinho) 25%, transparent);
+  border-radius: 14px;
+  background: var(--creme-claro);
+  color: var(--vinho);
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: 2px solid var(--terracota);
+  outline-offset: 1px;
+}
+
+.form fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.radio input {
+  accent-color: var(--terracota);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.form .sacolaRodape {
+  position: sticky;
+  bottom: 0;
+  margin-inline: -1.5rem;
+  background: var(--creme-claro);
+}

@@ -1,0 +1,130 @@
+.marcador {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.numero {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--destaque);
+  color: var(--bg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background-color 1.2s var(--ease-respira), color 1.2s var(--ease-respira);
+}
+
+.nome {
+  flex: none;
+  font-size: clamp(1.15rem, 0.95rem + 0.8vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.linha {
+  flex: 1;
+  min-width: 2rem;
+  height: 12px;
+  color: var(--destaque);
+}
+
+.linha svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linejoin: miter;
+}
+
+.linha path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s var(--ease-respira) 0.2s;
+}
+
+.marcador[data-visivel="true"] .linha path {
+  stroke-dashoffset: 0;
+}
+
+.numero,
+.nome {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s var(--ease-sai), transform 1s var(--ease-sai), background-color 1.2s var(--ease-respira),
+    color 1.2s var(--ease-respira);
+}
+
+.nome {
+  transition-delay: 0.1s;
+}
+
+.marcador[data-visivel="true"] .numero,
+.marcador[data-visivel="true"] .nome {
+  opacity: 1;
+  transform: none;
+}
+
+.link {
+  flex: none;
+  padding: 0.55em 1.1em;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, currentColor 35%, transparent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.5s var(--ease-sai), color 0.5s var(--ease-sai);
+}
+
+.link:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+@media (max-width: 600px) {
+  .link {
+    display: none;
+  }
+
+  .nome {
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .numero,
+  .nome {
+    opacity: 1;
+    transform: none;
+  }
+
+  .linha path {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* pequena sombra de postura no fim da linha: um marcador vivo */
+.sombra {
+  flex: none;
+  height: clamp(2.6rem, 4vw, 3.4rem);
+  width: auto;
+  aspect-ratio: 1;
+  margin-left: -0.35rem;
+  color: var(--destaque);
+  transition: color 1.2s var(--ease-respira);
+}
+
+@media (max-width: 600px) {
+  .sombra {
+    height: 2.4rem;
+  }
+}
