@@ -129,7 +129,7 @@ export const modalidades = [
     resumo: "Aulas de 1 hora, cada uma com tema e propósito. Até 10 pessoas, tapetes e material inclusos.",
     detalhe:
       "A modalidade principal do Rizoma. Você escolhe um horário de referência na semana e pratica em turma pequena, passando pelos cinco tempos da aula. Não precisa de experiência prévia.",
-    foto: "/fotos/triangulo-pb.webp",
+    foto: "/fotos/aula-em-grupo.webp",
     exemplo: false,
   },
   {
