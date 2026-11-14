@@ -64,10 +64,6 @@ export default function Inicio() {
               </a>
               <RespireComAGente />
             </div>
-            <p className={s.heroInfo} data-surge>
-              Você fala direto com a Maira no WhatsApp <i aria-hidden="true">·</i> venha com roupa confortável{" "}
-              <i aria-hidden="true">·</i> tapetes inclusos
-            </p>
           </div>
 
           <SombraSol id="lotus" className={s.heroSombra} />
