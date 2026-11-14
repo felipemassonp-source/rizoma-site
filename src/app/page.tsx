@@ -114,7 +114,7 @@ export default function Inicio() {
             <div>
               <p>Experimente uma aula e sinta se o Rizoma é pra você.</p>
               <span className={s.praticarSub}>
-                Agendamento simples pelo WhatsApp direto com a professora.
+                Agendamento simples pelo WhatsApp direto com a Maira.
               </span>
             </div>
             <div className={s.praticarBotoes}>
@@ -123,6 +123,9 @@ export default function Inicio() {
               </a>
               <Link href="/praticar" className="botao botao--contorno">
                 Ver horários e valores
+              </Link>
+              <Link href="/conhecer#espaco" className="botao botao--contorno">
+                Conhecer o espaço
               </Link>
             </div>
           </div>
@@ -250,8 +253,8 @@ export default function Inicio() {
               <TextoRespira
                 as="h2"
                 className={s.h2}
-                texto="O bem-estar se sente individualmente, mas se constrói coletivamente."
-                destaques={["coletivamente"]}
+                texto="Um ioga que atravessa muros: no presídio, nas comunidades e nas praças."
+                destaques={["muros:"]}
               />
             </div>
             <Revelar
@@ -281,10 +284,10 @@ export default function Inicio() {
         </div>
       </section>
 
-      {/* 9 · Apoiar — a lojinha */}
+      {/* 9 · Lojinha — compra que apoia os projetos */}
       <section className={s.apoiar} data-tema="creme">
         <div className="container">
-          <Marcador n="05" nome="Apoiar" href="/apoiar" rotuloLink="Lojinha" />
+          <Marcador n="05" nome="Lojinha" href="/apoiar" rotuloLink="Ver a lojinha" />
           <BoneDestaque />
         </div>
       </section>
@@ -295,11 +298,12 @@ export default function Inicio() {
           <Marcador n="06" nome="Rizomática" href="/rizomatica" rotuloLink="Todos os textos" />
           <div className={s.rizomaticaTopo}>
             <div>
-              <h2 className={s.h2}>Sem pressa, com calma.</h2>
+              <h2 className={s.h2}>Os textos da Maira, para ler sem pressa.</h2>
             </div>
             <p className={s.rizomaticaIntro}>
-              Textos para ler devagar. Aqui o ioga encontra a filosofia, a sociedade e o cotidiano. Um texto novo todo
-              primeiro domingo do mês.
+              A Rizomática é o espaço de escrita da Maira, onde o ioga encontra a filosofia, a sociedade e o cotidiano.
+              Um texto novo todo primeiro domingo do mês, aqui no site ou{" "}
+              <Link href="/rizomatica#newsletter">no seu e-mail</Link>.
             </p>
           </div>
 
@@ -343,11 +347,6 @@ export default function Inicio() {
               <br />
               {contato.endereco.linha2}
             </address>
-            <ul className={s.localAcesso}>
-              <li>Bicicletário no local</li>
-              <li>Várias linhas de ônibus pela rodovia</li>
-              <li>Estacionamento nas redondezas</li>
-            </ul>
             <div className={s.localAcoes}>
               <a className="botao" href={AGENDAR} target="_blank" rel="noreferrer">
                 Agendar aula experimental <span className="seta">→</span>
@@ -355,6 +354,9 @@ export default function Inicio() {
               <a className="botao botao--contorno" href={contato.endereco.mapa} target="_blank" rel="noreferrer">
                 Como chegar
               </a>
+              <Link href="/conhecer#espaco" className="botao botao--contorno">
+                Ver o espaço
+              </Link>
             </div>
           </Surgir>
         </div>

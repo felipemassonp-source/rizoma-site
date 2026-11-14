@@ -34,11 +34,36 @@
   gap: 0.5rem;
 }
 
-.contexto li {
-  padding: 0.5em 1.1em;
+.contextoTexto {
+  max-width: 60ch;
+}
+
+/* cada contexto é um botão de verdade: abre o WhatsApp com a mensagem pronta */
+.contexto li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.7em 1.3em;
   border-radius: 999px;
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--creme) 45%, transparent);
-  font-weight: 500;
+  background: var(--creme);
+  color: var(--vinho);
+  font-weight: 600;
+  transition: background-color 0.4s var(--ease-sai), color 0.4s var(--ease-sai), transform 0.5s var(--ease-sai);
+}
+
+.contexto li a span {
+  transition: transform 0.5s var(--ease-sai);
+}
+
+.contexto li a:hover,
+.contexto li a:focus-visible {
+  background: var(--terracota);
+  color: var(--creme);
+  transform: translateY(-2px);
+}
+
+.contexto li a:hover span {
+  transform: translateX(3px);
 }
 
 .contexto :global(.botao--contorno) {
@@ -102,7 +127,21 @@
   color: var(--terracota);
 }
 
+/* as fotos originais são pequenas: ficam num tamanho que não perde nitidez */
 .projetoFoto {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  justify-self: end;
+}
+
+@media (max-width: 899px) {
+  .projetoFoto {
+    justify-self: start;
+  }
+}
+
+.projetoFotoFalta {
   min-height: 260px;
 }
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { Entrada } from "../inicio/Entrada";
 import { SombraSol } from "../sombra/SombraSol";
+import { Indice } from "./Indice";
 import styles from "./Pagina.module.css";
 
 /** Topo das páginas internas: título grande que sobe da máscara + linhas que seguem o cursor. */
@@ -13,6 +14,7 @@ export function CabecaPagina({
   foto,
   fotoAlt = "",
   sombra,
+  indice,
 }: {
   sobretitulo: string;
   titulo: string[];
@@ -22,6 +24,8 @@ export function CabecaPagina({
   fotoAlt?: string;
   /** sombra de uma postura (com o sol) no lugar da foto */
   sombra?: string;
+  /** atalhos para as seções da página: dizem logo o que tem aqui */
+  indice?: { href: string; rotulo: string }[];
 }) {
   return (
     <section className={styles.cabeca} data-tema={tema} data-com-foto={Boolean(foto || sombra)}>
@@ -42,6 +46,7 @@ export function CabecaPagina({
               {lead}
             </div>
           )}
+          {indice && indice.length > 0 && <Indice itens={indice} />}
         </div>
         {sombra && <SombraSol id={sombra} className={styles.sombra} />}
         {!sombra && foto && (

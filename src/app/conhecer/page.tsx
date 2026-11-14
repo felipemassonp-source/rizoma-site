@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CabecaPagina, FotoFaltando } from "@/components/pagina/Pagina";
 import { Revelar } from "@/components/movimento/Revelar";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
@@ -5,70 +6,60 @@ import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
 import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { sobre, contato, linkWhatsApp } from "@/content/site";
 import { Principios } from "@/components/pagina/Principios";
+import { Pendente } from "@/components/Pendente";
 import s from "../paginas.module.css";
 
 export const metadata = { title: "Conhecer" };
 
 const AGENDAR = linkWhatsApp("Olá, Maira! Vim pelo site e quero agendar uma aula experimental no Rizoma.");
 
+/**
+ * Ordem pensada para quem chega sem conhecer nada:
+ * o que é → quem conduz → onde fica → e, para quem quiser ir fundo, por que o nome.
+ */
 export default function Conhecer() {
-  const { maira, espaco } = sobre;
+  const { maira, taili, espaco } = sobre;
   return (
     <>
       <CabecaPagina
-        sobretitulo="Conhecer · a escola"
-        titulo={["Prática corporal,", "reflexão crítica,", "compromisso social."]}
-        lead={<p>{sobre.escola[0]}</p>}
+        sobretitulo="Conhecer · a escola e a Maira"
+        titulo={["Uma escola,", "duas professoras,", "um bairro", "à beira‑mar."]}
+        lead={
+          <p>
+            O Rizoma é uma escola de ioga na Armação, em Florianópolis, idealizada pela professora Maira Lopes, que
+            conduz as aulas ao lado da professora Taili. Aqui você conhece a proposta, quem dá as aulas e onde a escola
+            fica.
+          </p>
+        }
+        indice={[
+          { href: "#escola", rotulo: "O Rizoma" },
+          { href: "#maira", rotulo: "Quem conduz" },
+          { href: "#espaco", rotulo: "O espaço" },
+          { href: "#conceito", rotulo: "Por que “Rizoma”" },
+        ]}
         foto="/fotos/maira-sorrindo.webp"
         fotoAlt="Maira sorrindo na praia ao entardecer, com o cabelo solto"
       />
 
-      {/* A escola + princípios */}
-      <section className={s.secao} data-tema="creme">
+      {/* 1 · O que é o Rizoma + princípios */}
+      <section className={s.secao} data-tema="creme" id="escola">
         <div className="container">
           <div className={s.topoSecao}>
-            <TextoRespira as="h2" className={s.h2} texto="Mais do que ensinar posturas, criar espaço para o corpo sentir, pensar e transformar." destaques={["sentir,", "pensar", "transformar."]} />
-            <Surgir className={s.corpo}>
-              <p>{sobre.escola[1]}</p>
+            <div>
+              <p className="sobretitulo">O Rizoma</p>
+              <TextoRespira as="h2" className={s.h2} texto="Um ioga que também pensa." destaques={["pensa."]} />
+            </div>
+            <Surgir filhos className={s.corpo}>
+              {sobre.escola.map((t) => (
+                <p key={t.slice(0, 20)}>{t}</p>
+              ))}
             </Surgir>
           </div>
           <Principios />
         </div>
       </section>
 
-      {/* O conceito */}
-      <section className={s.secao} data-tema="vinho" id="conceito">
-        <div className={s.conceitoLinhas} aria-hidden="true">
-          <LinhasRespirando linhas={8} amplitude={1} espessura={1.5} rolagem comecaReta />
-        </div>
-        <div className={`container ${s.duas}`}>
-          <div>
-            <p className="sobretitulo">Por que Rizoma</p>
-            <blockquote className={s.citacao} style={{ marginTop: "1.5rem" }}>
-              Não é raiz.
-              <br />
-              <span>É movimento.</span>
-            </blockquote>
-          </div>
-          <Surgir filhos className={s.corpo}>
-            {sobre.conceito.map((t) => (
-              <p key={t.slice(0, 20)}>{t}</p>
-            ))}
-          </Surgir>
-        </div>
-      </section>
-
-      {/* Uma foto de praia de ponta a ponta */}
-      <FotoCheia src="/fotos/agachada-por-do-sol.webp" alt="Silhueta de Maira numa postura agachada, com o braço erguido, contra o sol se pondo no mar" posicao="45% 55%">
-        <p style={{ fontSize: "var(--t-h1)", lineHeight: 0.98, letterSpacing: "-0.035em", maxWidth: "12ch", fontWeight: 500 }}>
-          Presença e observação. Ação e silêncio.
-        </p>
-        <p style={{ marginTop: "1rem", fontSize: "var(--t-mini)", fontWeight: 600, letterSpacing: "0.3em", textTransform: "uppercase" }}>
-          Do Manual da Marca do Rizoma
-        </p>
-      </FotoCheia>
-
-      {/* A Maira */}
+      {/* 2 · Quem conduz */}
       <section className={s.secao} data-tema="claro" id="maira">
         <div className={`container ${s.duas}`}>
           <div className={s.retratos}>
@@ -81,10 +72,10 @@ export default function Conhecer() {
               sizes="(min-width: 900px) 38vw, 90vw"
             />
             <Revelar
-              src="/fotos/ponte-praia.webp"
-              alt="Maira na postura da ponte na areia da praia, com o mar e as montanhas ao fundo"
+              src="/fotos/roda-praia.webp"
+              alt="Maira na postura da roda, com o corpo em arco na areia da praia"
               className={s.retratoB}
-              posicao="50% 45%"
+              posicao="50% 50%"
               sizes="(min-width: 900px) 38vw, 90vw"
             />
           </div>
@@ -112,14 +103,29 @@ export default function Conhecer() {
                 <span>UFSCar</span>
               </li>
             </ul>
-            <blockquote className={s.citacao} style={{ fontSize: "var(--t-h3)" }}>
-              “{maira.citacao.split(",")[0]},<span>{maira.citacao.split(",")[1]}</span>”
-            </blockquote>
+          </div>
+        </div>
+
+        {/* A segunda professora */}
+        <div className={`container ${s.duas}`} style={{ marginTop: "clamp(3.5rem, 8vw, 6rem)", alignItems: "center" }}>
+          <FotoFaltando legenda="Retrato da Taili" />
+          <div style={{ display: "grid", gap: "1.25rem", alignContent: "start" }}>
+            <p className="sobretitulo">Também conduz</p>
+            <h2 className={s.h2} style={{ marginTop: 0 }}>
+              {taili.nome}
+            </h2>
+            <p className={s.lead}>
+              Professora do Rizoma, conduz aulas em grupo às segundas, terças, quartas e quintas.
+            </p>
+            <Pendente>falta a apresentação da Taili (formação, trajetória e jeito de conduzir) e uma foto.</Pendente>
+            <Link className="botao botao--contorno" style={{ justifySelf: "start" }} href="/praticar#horarios">
+              Ver os horários de cada professora <span className="seta">→</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* O espaço */}
+      {/* 3 · Onde fica */}
       <section className={s.secao} data-tema="creme" id="espaco">
         <div className="container">
           <div className={s.topoSecao}>
@@ -155,6 +161,38 @@ export default function Conhecer() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Pausa: uma foto de praia de ponta a ponta */}
+      <FotoCheia src="/fotos/agachada-por-do-sol.webp" alt="Silhueta de Maira numa postura agachada, com o braço erguido, contra o sol se pondo no mar" posicao="45% 55%">
+        <p style={{ fontSize: "var(--t-h1)", lineHeight: 0.98, letterSpacing: "-0.035em", maxWidth: "12ch", fontWeight: 500 }}>
+          Presença e observação. Ação e silêncio.
+        </p>
+        <p style={{ marginTop: "1rem", fontSize: "var(--t-mini)", fontWeight: 600, letterSpacing: "0.3em", textTransform: "uppercase" }}>
+          Do Manual da Marca do Rizoma
+        </p>
+      </FotoCheia>
+
+      {/* 4 · Para quem quer ir fundo: por que o nome */}
+      <section className={s.secao} data-tema="vinho" id="conceito">
+        <div className={s.conceitoLinhas} aria-hidden="true">
+          <LinhasRespirando linhas={8} amplitude={1} espessura={1.5} rolagem comecaReta />
+        </div>
+        <div className={`container ${s.duas}`}>
+          <div>
+            <p className="sobretitulo">Por que “Rizoma”</p>
+            <blockquote className={s.citacao} style={{ marginTop: "1.5rem" }}>
+              Não é raiz.
+              <br />
+              <span>É movimento.</span>
+            </blockquote>
+          </div>
+          <Surgir filhos className={s.corpo}>
+            {sobre.conceito.map((t) => (
+              <p key={t.slice(0, 20)}>{t}</p>
+            ))}
+          </Surgir>
         </div>
       </section>
 

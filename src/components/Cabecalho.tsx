@@ -85,6 +85,7 @@ export function Cabecalho() {
           {navegacao.map((item) => (
             <Link key={item.href} href={item.href} aria-current={caminho === item.href ? "page" : undefined}>
               {item.rotulo}
+              {item.href !== "/" && <span className={styles.dica}>{item.descricao}</span>}
             </Link>
           ))}
         </nav>
@@ -119,7 +120,7 @@ export function Cabecalho() {
 
       <div id="menu-principal" ref={menuRef} className={styles.menu} aria-hidden={!aberto} inert={!aberto}>
         <nav className={styles.lista} aria-label="Menu">
-          {navegacao.map((item, i) => (
+          {navegacao.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -128,8 +129,8 @@ export function Cabecalho() {
               onClick={() => setAberto(false)}
             >
               <span className={styles.item}>
-                <span className={styles.numero}>{String(i + 1).padStart(2, "0")}</span>
                 {item.rotulo}
+                {item.href !== "/" && <span className={styles.descricao}>{item.descricao}</span>}
               </span>
             </Link>
           ))}

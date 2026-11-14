@@ -3,7 +3,7 @@ import { Loja } from "@/components/loja/Loja";
 import { Surgir } from "@/components/movimento/Surgir";
 import s from "../paginas.module.css";
 
-export const metadata = { title: "Apoiar" };
+export const metadata = { title: "Lojinha" };
 
 const PASSOS = [
   { n: "01", t: "Escolha", d: "Cor, tamanho e quantidade de cada peça." },
@@ -15,7 +15,7 @@ export default function Apoiar() {
   return (
     <>
       <CabecaPagina
-        sobretitulo="Apoiar · lojinha"
+        sobretitulo="Lojinha · compre e apoie os projetos sociais"
         sombra="lua"
         titulo={["Vista o que", "você acredita."]}
         lead={

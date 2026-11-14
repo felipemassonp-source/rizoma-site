@@ -15,9 +15,20 @@ export default function Aprofundar() {
   return (
     <>
       <CabecaPagina
-        sobretitulo={formacao.formato}
+        sobretitulo="Aprofundar · formação em ioga"
         titulo={["Do tapetinho à", "compreensão, do", "corpo à reflexão."]}
-        lead={<p>{formacao.intro}</p>}
+        lead={
+          <p>
+            <strong>{formacao.nome}</strong>: curso presencial de 60 horas em Florianópolis, em 6 módulos, um sábado
+            por mês. Para quem quer ir além da superfície e construir com segurança uma prática pessoal.
+          </p>
+        }
+        indice={[
+          { href: "#metodo", rotulo: "O método" },
+          { href: "#modulos", rotulo: "Os módulos" },
+          { href: "#investimento", rotulo: "Investimento" },
+          { href: "#turma", rotulo: "Próxima turma" },
+        ]}
         tema="terracota"
         sombra="torcao"
         foto="/fotos/escorpiao-estudio.webp"
@@ -25,10 +36,10 @@ export default function Aprofundar() {
       />
 
       {/* Método */}
-      <section className={s.secao} data-tema="creme">
+      <section className={s.secao} data-tema="creme" id="metodo">
         <div className={`container ${s.duas}`}>
           <div>
-            <p className="sobretitulo">{formacao.nome}</p>
+            <p className="sobretitulo">O método</p>
             <TextoRespira as="h2" className={s.h2} texto="Teoria e experiência, lado a lado." destaques={["experiência,"]} />
           </div>
           <Surgir className={s.corpo}>
@@ -46,7 +57,7 @@ export default function Aprofundar() {
       </section>
 
       {/* Módulos — cartões que se empilham */}
-      <section className={s.secao} data-tema="claro">
+      <section className={s.secao} data-tema="claro" id="modulos">
         <div className="container">
           <div className={s.topoSecao}>
             <div>
@@ -72,7 +83,7 @@ export default function Aprofundar() {
       </section>
 
       {/* O que inclui + investimento */}
-      <section className={s.secao} data-tema="vinho">
+      <section className={s.secao} data-tema="vinho" id="investimento">
         <div className={`container ${s.duas}`}>
           <div>
             <p className="sobretitulo">O que está incluso</p>

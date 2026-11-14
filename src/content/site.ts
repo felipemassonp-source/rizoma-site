@@ -27,14 +27,15 @@ export function linkWhatsApp(mensagem: string) {
   return `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 }
 
+/** `descricao`: o que tem em cada página, para o verbo do menu não ficar sozinho. */
 export const navegacao = [
-  { href: "/", rotulo: "Início" },
-  { href: "/conhecer", rotulo: "Conhecer" },
-  { href: "/praticar", rotulo: "Praticar" },
-  { href: "/aprofundar", rotulo: "Aprofundar" },
-  { href: "/sociedade", rotulo: "Sociedade" },
-  { href: "/apoiar", rotulo: "Apoiar" },
-  { href: "/rizomatica", rotulo: "Rizomática" },
+  { href: "/", rotulo: "Início", descricao: "página inicial" },
+  { href: "/conhecer", rotulo: "Conhecer", descricao: "a escola e a Maira" },
+  { href: "/praticar", rotulo: "Praticar", descricao: "aulas, horários e valores" },
+  { href: "/aprofundar", rotulo: "Aprofundar", descricao: "formação em ioga" },
+  { href: "/sociedade", rotulo: "Sociedade", descricao: "projetos sociais" },
+  { href: "/apoiar", rotulo: "Lojinha", descricao: "compre e apoie os projetos" },
+  { href: "/rizomatica", rotulo: "Rizomática", descricao: "textos e newsletter da Maira" },
 ];
 
 /* ───────────────────────── Início / Conhecer ───────────────────────── */
@@ -64,7 +65,7 @@ export const principios = [
   { titulo: "Acolhimento e diversidade", texto: "Corpos, idades e pensamentos diferentes convivem aqui." },
   { titulo: "Prática adaptada a você", texto: "O ioga serve à pessoa, e não o contrário." },
   { titulo: "Corpo como experiência", texto: "Cada prática é uma investigação, um convite a sentir e refletir." },
-  { titulo: "Comunidade viva", texto: "Trilhas, encontros e trocas, com uma professora que conecta corpo e pensamento." },
+  { titulo: "Comunidade viva", texto: "Trilhas, encontros e trocas, com professoras que conectam corpo e pensamento." },
 ];
 
 /** Nós da rede do bloco "Por que Rizoma" (palavras do Manual da Marca). */
@@ -102,6 +103,11 @@ export const sobre = {
     ],
     citacao: "Mais do que posturas, buscamos sentido.",
   },
+  /** Segunda professora. Só o nome e os horários são conhecidos: bio e foto pendentes. */
+  taili: {
+    nome: "Taili",
+    papel: "Professora",
+  },
   espaco: {
     texto:
       "A escola fica na Armação, um bairro de pescadores no sul da ilha onde o mar dita o ritmo dos dias, a 500 metros da praia. A sala comporta confortavelmente 10 pessoas por aula, com tapetes e todo o material incluso.",
@@ -122,16 +128,16 @@ export const modalidades = [
     nome: "Aulas em grupo",
     resumo: "Aulas de 1 hora, cada uma com tema e propósito. Até 10 pessoas, tapetes e material inclusos.",
     detalhe:
-      "Não seguimos um estilo fixo de ioga. Cada aula passa por explanação teórica (jñāna), concentração (dhāraṇā), posturas (āsana), respiração (prāṇāyāma) e relaxamento (śavāsana). Sugerimos pelo menos 3 meses contínuos para perceber os benefícios mais profundos. Não precisa de experiência prévia.",
+      "A modalidade principal do Rizoma. Você escolhe um horário de referência na semana e pratica em turma pequena, passando pelos cinco tempos da aula. Não precisa de experiência prévia.",
     foto: "/fotos/triangulo-pb.webp",
     exemplo: false,
   },
   {
     id: "praia",
     nome: "Ioga na praia",
-    resumo: "Como tudo começou: no calçadão da Armação, com o mar como sala de prática.",
+    resumo: "Prática ao ar livre, no calçadão da Armação, com o mar como sala de prática.",
     detalhe:
-      "O Rizoma nasceu no calçadão da praia da Armação, em maio de 2021. As aulas na praia acontecem pontualmente, principalmente no verão. Entre na lista de avisos para saber as próximas datas.",
+      "As aulas na praia acontecem pontualmente, principalmente no verão, no mesmo calçadão onde o Rizoma começou. Entre na lista de avisos para saber as próximas datas.",
     foto: "/fotos/guerreiro-por-do-sol.webp",
     exemplo: false,
   },
@@ -155,16 +161,59 @@ export const modalidades = [
   },
 ];
 
-/** EXEMPLO — grade fictícia só para visualizar o formato. */
-export const grade = {
-  exemplo: true,
+/** Professoras que conduzem as aulas (a Maira é também a idealizadora). */
+export const professoras = ["Maira", "Taili"] as const;
+
+/** Rostinho de cada professora na grade de horários (null = foto ainda não chegou). */
+export const rostos: Record<(typeof professoras)[number], string | null> = {
+  Maira: "/fotos/rosto-maira.webp",
+  Taili: null,
+};
+
+type Aula = { hora: string; tipo: string; professora?: (typeof professoras)[number]; obs?: string };
+
+/** Grade REAL, tirada do card de horários do Rizoma (com a professora de cada aula). */
+export const grade: { exemplo: boolean; dias: { dia: string; aulas: Aula[] }[] } = {
+  exemplo: false,
   dias: [
-    { dia: "Segunda", aulas: [{ hora: "08:00", tipo: "Aula em grupo" }, { hora: "19:00", tipo: "Aula em grupo" }] },
-    { dia: "Terça", aulas: [{ hora: "18:00", tipo: "Ioga restaurativo" }] },
-    { dia: "Quarta", aulas: [{ hora: "08:00", tipo: "Aula em grupo" }, { hora: "19:00", tipo: "Aula em grupo" }] },
-    { dia: "Quinta", aulas: [{ hora: "18:00", tipo: "Ioga restaurativo" }] },
-    { dia: "Sexta", aulas: [{ hora: "08:00", tipo: "Aula em grupo" }] },
-    { dia: "Sábado", aulas: [{ hora: "07:30", tipo: "Ioga na praia", obs: "no verão" }] },
+    {
+      dia: "Segunda",
+      aulas: [
+        { hora: "9h", tipo: "Aula on-line" },
+        { hora: "17h30", tipo: "Aula em grupo", professora: "Taili" },
+        { hora: "19h", tipo: "Aula em grupo", professora: "Maira" },
+      ],
+    },
+    {
+      dia: "Terça",
+      aulas: [
+        { hora: "8h", tipo: "Aula em grupo", professora: "Taili" },
+        { hora: "19h", tipo: "Aula em grupo", professora: "Taili" },
+      ],
+    },
+    {
+      dia: "Quarta",
+      aulas: [
+        { hora: "8h", tipo: "Aula em grupo", professora: "Maira" },
+        { hora: "9h30", tipo: "Aula em grupo", professora: "Maira" },
+        { hora: "17h30", tipo: "Aula em grupo", professora: "Taili" },
+        { hora: "19h", tipo: "Aula em grupo", professora: "Maira" },
+      ],
+    },
+    {
+      dia: "Quinta",
+      aulas: [
+        { hora: "8h", tipo: "Aula em grupo", professora: "Taili" },
+        { hora: "19h", tipo: "Aula em grupo", professora: "Taili" },
+      ],
+    },
+    {
+      dia: "Sexta",
+      aulas: [
+        { hora: "8h", tipo: "Aula em grupo", professora: "Maira" },
+        { hora: "9h30", tipo: "Aula em grupo", professora: "Maira" },
+      ],
+    },
   ],
 };
 
@@ -229,7 +278,13 @@ export const respira = {
     "Uma iniciativa nascida no Rizoma: ações abertas e gratuitas em praias, praças e calçadões, juntando práticas corporais, respiração, silêncio e encontro. Não exige experiência prévia.",
     "Vivemos sob um ritmo contínuo de aceleração e produtividade. O cuidado com a saúde virou algo individual, e os espaços públicos perderam a função de encontro e pausa. Respirar, aqui, não é só uma técnica: é uma forma de interromper o ritmo automático da vida.",
   ],
-  contextos: ["Empresas", "Escolas e universidades", "Coletivos", "Eventos públicos ou privados"],
+  /** Cada um vira um botão que abre o WhatsApp já com a mensagem certa. */
+  contextos: [
+    { nome: "Empresas", mensagem: "a minha empresa" },
+    { nome: "Escolas e universidades", mensagem: "uma escola ou universidade" },
+    { nome: "Coletivos", mensagem: "um coletivo" },
+    { nome: "Eventos públicos ou privados", mensagem: "um evento" },
+  ],
   frase: "Respira é um convite. À pausa. Ao encontro. Ao corpo presente no mundo.",
   foto: "/fotos/respira-calcadao.webp",
 };
@@ -241,7 +296,8 @@ export const projetos = [
     desde: "Desde outubro de 2024",
     texto:
       "Aulas semanais no Presídio Feminino de Florianópolis. Já foram cinco turmas, com cerca de 60 mulheres. A participação é reconhecida pelo sistema prisional por meio de alvarás de recompensa.",
-    foto: null as string | null,
+    foto: "/fotos/ioga-entre-grades.webp" as string | null,
+    fotoAlt: "Mulheres de uniforme laranja praticando ioga sentadas em tapetes, no pátio do presídio",
   },
   {
     id: "cidades",
@@ -249,14 +305,16 @@ export const projetos = [
     desde: "Toda quinta-feira",
     texto:
       "Em parceria com o Instituto Cidades Invisíveis, aulas para moradoras das comunidades do Mocotó, Mariquinha e Frei Damião.",
-    foto: null as string | null,
+    foto: "/fotos/cidades-invisiveis.webp" as string | null,
+    fotoAlt: "Alunas na postura de avanço com os braços erguidos, sobre tapetes azuis",
   },
   {
     id: "palavras",
     nome: "Palavras que Voam",
     desde: "Com a Prefeitura de Florianópolis",
     texto: "Arrecadação de livros que são distribuídos junto às cestas básicas entregues pelo CRAS.",
-    foto: null as string | null,
+    foto: "/fotos/palavras-que-voam.webp" as string | null,
+    fotoAlt: "Crianças escolhendo livros numa caixa de doações",
   },
 ];
 
@@ -303,7 +361,7 @@ export const produtos: Produto[] = [
       { nome: "Caramelo", hex: "#b07a45" },
     ],
     tamanhos: ["Único"],
-    foto: null,
+    foto: "/produtos/bones.webp",
     exemplo: false,
   },
   {

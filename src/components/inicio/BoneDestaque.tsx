@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { produtoDestaque } from "@/content/site";
-import { BoneMockup } from "../loja/BoneMockup";
+import Image from "next/image";
 import { Pendente } from "../Pendente";
 import styles from "./BoneDestaque.module.css";
 
@@ -14,8 +14,12 @@ export function BoneDestaque() {
   return (
     <div className={styles.bone}>
       <div className={styles.vitrine} data-cursor>
-        <BoneMockup cor={cor.hex} className={styles.mockup} rotulo={`Boné Respira na cor ${cor.nome}`} />
-        <span className={styles.nomeCor}>{cor.nome}</span>
+        <Image
+          src={produtoDestaque.foto ?? ""}
+          alt="Bonés Respira nas cores azul claro, terracota e off-white, numa prateleira com caixas do Respira"
+          fill
+          sizes="(min-width: 900px) 40vw, 90vw"
+        />
       </div>
 
       <div className={styles.info}>
@@ -24,6 +28,9 @@ export function BoneDestaque() {
           {produtoDestaque.nome}. {produtoDestaque.descricao}
         </p>
 
+        <p className={styles.corEscolhida}>
+          Cor: <strong>{cor.nome}</strong>
+        </p>
         <div className={styles.cores} role="radiogroup" aria-label="Cor do boné">
           {produtoDestaque.cores.map((c) => (
             <button
@@ -46,7 +53,7 @@ export function BoneDestaque() {
           </Link>
         </div>
 
-        <Pendente>fotos reais do boné (a imagem é uma ilustração) e dados das camisetas (preço, cores e tamanhos).</Pendente>
+        <Pendente>dados das camisetas (preço, cores e tamanhos).</Pendente>
       </div>
     </div>
   );

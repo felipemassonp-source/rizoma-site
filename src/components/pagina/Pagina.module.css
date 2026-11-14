@@ -132,3 +132,43 @@
     justify-self: start;
   }
 }
+
+/* Índice "Nesta página": atalhos para as seções, logo abaixo do lead */
+.indice {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.indiceRotulo {
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.indice ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.indice a {
+  display: inline-block;
+  padding: 0.45em 1em;
+  border: 1.5px solid color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: background-color 0.4s var(--ease-sai), border-color 0.4s var(--ease-sai), color 0.4s var(--ease-sai);
+}
+
+.indice a:hover,
+.indice a:focus-visible {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}

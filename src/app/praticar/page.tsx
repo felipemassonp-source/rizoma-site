@@ -22,21 +22,28 @@ export default function Praticar() {
   return (
     <>
       <CabecaPagina
-        sobretitulo="Praticar"
+        sobretitulo="Praticar · aulas, horários e valores"
         titulo={["Corpo, pensamento", "e presença se", "encontram aqui."]}
         lead={
           <p>
-            Mais do que um estúdio, o Rizoma é uma comunidade. A diversidade é natural: diferentes idades, corpos e
-            trajetórias. Não é preciso experiência prévia.
+            Aulas de ioga de 1 hora, para até 10 pessoas, com tapetes e material inclusos. Não é preciso experiência
+            prévia: a primeira aula é experimental.
           </p>
         }
+        indice={[
+          { href: "#aula", rotulo: "Como é uma aula" },
+          { href: "#modalidades", rotulo: "Modalidades" },
+          { href: "#horarios", rotulo: "Horários" },
+          { href: "#valores", rotulo: "Valores" },
+          { href: "#perguntas", rotulo: "Perguntas" },
+        ]}
         sombra="arvore"
         foto="/fotos/corvo-pedra.webp"
         fotoAlt="Maira em equilíbrio sobre os braços numa pedra à beira-mar"
       />
 
       {/* Como é uma aula */}
-      <section className={s.secao} data-tema="vinho">
+      <section className={s.secao} data-tema="vinho" id="aula">
         <div className="container">
           <div className={s.topoSecao}>
             <div>
@@ -107,8 +114,10 @@ export default function Praticar() {
               <h2 className={s.h2}>Escolha seu horário de referência.</h2>
             </div>
             <div style={{ display: "grid", gap: "1rem", justifyItems: "start" }}>
-              <p className={s.lead}>Os horários são flexíveis: sempre que precisar trocar, é só avisar.</p>
-              <SeloExemplo>Grade de exemplo: horários fictícios</SeloExemplo>
+              <p className={s.lead}>
+                As aulas são conduzidas pela Maira e pela Taili. Os horários são flexíveis: sempre que precisar trocar,
+                é só avisar.
+              </p>
             </div>
           </div>
           <GradeHorarios />
@@ -153,7 +162,7 @@ export default function Praticar() {
       </section>
 
       {/* Perguntas */}
-      <section className={s.secao} data-tema="claro">
+      <section className={s.secao} data-tema="claro" id="perguntas">
         <div className={`container ${s.duas}`}>
           <div>
             <p className="sobretitulo">Perguntas</p>

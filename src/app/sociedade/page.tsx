@@ -13,9 +13,20 @@ export default function Sociedade() {
   return (
     <>
       <CabecaPagina
-        sobretitulo="Sociedade · projetos e ações"
+        sobretitulo="Sociedade · projetos sociais e ações"
         titulo={["O bem-estar", "se constrói", "coletivamente."]}
-        lead={<p>Ioga com propósito social. A prática pode atravessar muros e fronteiras.</p>}
+        lead={
+          <p>
+            O ioga do Rizoma também sai da sala: aulas no Presídio Feminino, nas comunidades e práticas abertas e
+            gratuitas em praias e praças, com o Movimento Respira.
+          </p>
+        }
+        indice={[
+          { href: "#respira", rotulo: "Movimento Respira" },
+          { href: "#projetos", rotulo: "Projetos sociais" },
+          { href: "#agenda", rotulo: "Agenda" },
+          { href: "#como-apoiar", rotulo: "Como apoiar" },
+        ]}
         tema="vinho"
         sombra="guerreiro"
         foto="/fotos/respira-praia.webp"
@@ -46,24 +57,35 @@ export default function Sociedade() {
           </div>
 
           <div className={so.contexto}>
-            <h3>Leve o Respira para o seu contexto</h3>
-            <p>Cada proposta é pensada para o lugar e para as pessoas. Pode acontecer em:</p>
+            <h3>Leve o Respira até você</h3>
+            <p className={so.contextoTexto}>
+              Além das ações abertas, o Respira também vai até empresas, escolas, coletivos e eventos, com uma proposta
+              pensada para cada lugar e cada grupo. Escolha onde você quer levar e fale com a gente pelo WhatsApp:
+            </p>
             <ul>
               {respira.contextos.map((c) => (
-                <li key={c}>{c}</li>
+                <li key={c.nome}>
+                  <a
+                    href={linkWhatsApp(`Olá, Maira! Quero levar o Movimento Respira para ${c.mensagem}.`)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {c.nome} <span aria-hidden="true">→</span>
+                  </a>
+                </li>
               ))}
             </ul>
             <div className={s.acoes}>
               <a
-                className={`botao ${s.botaoClaro}`}
-                href={linkWhatsApp("Olá, Maira! Quero levar o Movimento Respira para o meu contexto.")}
+                className="botao botao--contorno"
+                href={linkWhatsApp("Olá, Maira! Quero levar o Movimento Respira para outro lugar.")}
                 target="_blank"
                 rel="noreferrer"
               >
-                Fale com a gente <span className="seta">→</span>
+                Outro lugar? Fale com a gente
               </a>
               <a className="botao botao--contorno" href={`https://instagram.com/${contato.instagramRespira}`} target="_blank" rel="noreferrer">
-                @{contato.instagramRespira}
+                Ver o Respira no Instagram
               </a>
             </div>
           </div>
@@ -84,7 +106,17 @@ export default function Sociedade() {
                   <span className={so.projetoDesde}>{p.desde}</span>
                   <p>{p.texto}</p>
                 </div>
-                <FotoFaltando legenda={`Uma foto do projeto ${p.nome}`} className={so.projetoFoto} />
+                {p.foto ? (
+                  <Revelar
+                    src={p.foto}
+                    alt={p.fotoAlt}
+                    className={so.projetoFoto}
+                    recorte={(["arco", "circulo", "reto"] as const)[i % 3]}
+                    sizes="360px"
+                  />
+                ) : (
+                  <FotoFaltando legenda={`Uma foto do projeto ${p.nome}`} className={so.projetoFotoFalta} />
+                )}
                 {p.id === "grades" && (
                   <div className={so.projetoExtra}>
                     <PresidioPontos />
@@ -135,7 +167,7 @@ export default function Sociedade() {
       </section>
 
       {/* Apoiar */}
-      <section className={s.secao} data-tema="creme">
+      <section className={s.secao} data-tema="creme" id="como-apoiar">
         <div className={`container ${s.duas} ${s.duasFim}`}>
           <div>
             <p className="sobretitulo">Como apoiar</p>

@@ -12,6 +12,9 @@
 
 .filtros button,
 .abas button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
   padding: 0.55em 1.1em;
   border-radius: 999px;
   box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 40%, transparent);
@@ -91,6 +94,25 @@
   font-weight: 500;
 }
 
+.prof {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.filtrosRotulo {
+  align-self: center;
+  margin-right: 0.25rem;
+  font-size: var(--t-mini);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
 .obs {
   font-size: 0.85rem;
   opacity: 0.7;
@@ -102,10 +124,109 @@
   }
 
   .semana {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(var(--dias, 5), 1fr);
   }
 
   .dia {
     display: block;
+  }
+}
+
+/* ---------- Quem conduz: rostinhos ---------- */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+
+.quem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.05rem;
+}
+
+.rostos {
+  display: flex;
+  align-items: center;
+}
+
+/* cada rosto "recolhe" quando a outra professora é escolhida */
+.rostoSlot {
+  display: inline-flex;
+  max-width: 4.5rem;
+  opacity: 1;
+  transform: scale(1);
+  transition: max-width 0.7s var(--ease-respira), opacity 0.5s var(--ease-sai), transform 0.7s var(--ease-respira),
+    margin 0.7s var(--ease-respira);
+}
+
+.rostoSlot + .rostoSlot {
+  margin-left: -0.9rem;
+}
+
+.rostoSlot[data-visivel="false"] {
+  max-width: 0;
+  margin-left: 0;
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+/* se o primeiro some, compensa a sobreposição do segundo */
+.rostoSlot[data-visivel="false"]:first-child {
+  margin-right: 0.9rem;
+}
+
+.rosto {
+  position: relative;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 0 0 2px var(--bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.rosto img {
+  object-fit: cover;
+}
+
+.rosto[data-tamanho="g"] {
+  width: 4rem;
+  height: 4rem;
+  box-shadow: 0 0 0 3px var(--bg);
+  font-size: 1.4rem;
+}
+
+/* foto ainda não chegou: lugar guardado, tracejado */
+.rosto[data-sem-foto="true"] {
+  background: color-mix(in srgb, var(--fg) 8%, var(--bg));
+  outline: 1.5px dashed color-mix(in srgb, var(--fg) 55%, transparent);
+  outline-offset: -1.5px;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+}
+
+.botaoRostos {
+  display: inline-flex;
+}
+
+.botaoRostos .rosto + .rosto {
+  margin-left: -0.45rem;
+}
+
+.filtros button[aria-pressed="true"] .rosto {
+  box-shadow: 0 0 0 2px var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rostoSlot {
+    transition: none;
   }
 }

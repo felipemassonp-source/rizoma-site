@@ -58,6 +58,15 @@
   margin-bottom: 0.5rem;
 }
 
+.aberturaNome {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.ritmo a {
+  border-bottom: 1.5px solid currentColor;
+}
+
 .ritmo {
   font-size: 0.95rem;
   font-weight: 600;

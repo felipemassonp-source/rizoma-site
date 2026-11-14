@@ -675,6 +675,10 @@
   line-height: 1.45;
 }
 
+.rizomaticaIntro a {
+  border-bottom: 1.5px solid currentColor;
+}
+
 .texto {
   display: grid;
   border-radius: 32px;

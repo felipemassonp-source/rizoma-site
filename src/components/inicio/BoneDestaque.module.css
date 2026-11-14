@@ -85,16 +85,21 @@
   font-weight: 600;
 }
 
-/* vitrine com o mockup do boné */
+/* vitrine com a foto real dos bonés, em arco (recorte da marca) */
 .vitrine {
+  aspect-ratio: 4 / 5;
+  max-width: 460px;
+  width: 100%;
+  justify-self: center;
+  border-radius: 999px 999px 28px 28px;
+  overflow: hidden;
   background: var(--creme-claro);
 }
 
-.mockup {
-  width: 82%;
-  height: auto;
+.vitrine img {
+  object-fit: cover;
 }
 
-.nomeCor {
-  bottom: 9%;
+.corEscolhida {
+  font-size: 0.95rem;
 }

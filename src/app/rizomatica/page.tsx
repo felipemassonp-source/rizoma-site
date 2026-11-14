@@ -12,18 +12,26 @@ export default function Rizomatica() {
     <>
       <section className={styles.abertura} data-tema="claro">
         <Entrada className={`container ${styles.aberturaGrade}`}>
+          <div className={styles.aberturaNome}>
+          <p className="sobretitulo" data-surge>
+            Textos e newsletter da Maira
+          </p>
           <h1 className={styles.marca}>
             <span data-linha>
               <span>Rizomática</span>
             </span>
           </h1>
+          </div>
           <div className={styles.aberturaTexto} data-surge>
             <SombraSol id="pombo" className={styles.aberturaSombra} />
             <p>
-              Textos da Maira para ler devagar. Aqui o ioga encontra a filosofia, a sociedade e o cotidiano, sem
-              fórmulas prontas.
+              A Rizomática é o espaço de escrita da Maira: textos para ler devagar, em que o ioga encontra a
+              filosofia, a sociedade e o cotidiano, sem fórmulas prontas.
             </p>
-            <p className={styles.ritmo}>Um texto novo todo primeiro domingo do mês.</p>
+            <p className={styles.ritmo}>
+              Um texto novo todo primeiro domingo do mês. Leia aqui ou{" "}
+              <a href="#newsletter">receba por e-mail</a>.
+            </p>
           </div>
         </Entrada>
       </section>
@@ -34,7 +42,7 @@ export default function Rizomatica() {
         </div>
       </section>
 
-      <section className={styles.newsSecao} data-tema="claro">
+      <section className={styles.newsSecao} data-tema="claro" id="newsletter">
         <div className="container">
           <Newsletter escuro />
         </div>
