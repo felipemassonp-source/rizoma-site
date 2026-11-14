@@ -16,6 +16,9 @@ export const SOMBRAS: SombraDados[] = [
   { id: "pombo", sanscrito: "Kapotāsana", nome: "Pombo", w: 1016, h: 800 },
   { id: "prancha-lateral", sanscrito: "Vasiṣṭhāsana", nome: "Prancha lateral", w: 807, h: 800 },
   { id: "roda", sanscrito: "Ūrdhva Dhanurāsana", nome: "Roda", w: 1045, h: 776 },
+  { id: "arado", sanscrito: "Halāsana", nome: "Arado", w: 1065, h: 556 },
+  { id: "cachorro", sanscrito: "Adho Mukha Śvānāsana", nome: "Cachorro olhando para baixo", w: 1056, h: 607 },
+  { id: "torcao-sentada", sanscrito: "Ardha Matsyendrāsana", nome: "Meia torção sentada", w: 855, h: 800 },
 ];
 
 export const sombra = (id: string) => SOMBRAS.find((s) => s.id === id) ?? SOMBRAS[0];

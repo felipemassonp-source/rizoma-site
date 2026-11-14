@@ -13,7 +13,14 @@ import styles from "./Marcador.module.css";
 
 // Posturas que não aparecem em nenhum outro lugar do site (cada página tem a sua).
 // Só alguns marcadores levam sombra, para não repetir nem poluir.
-const POR_MARCADOR: Record<string, string> = { "01": "roda", "03": "prancha-lateral", "05": "cobra" };
+const POR_MARCADOR: Record<string, string> = {
+  "01": "roda",
+  "02": "cachorro",
+  "03": "prancha-lateral",
+  "04": "arado",
+  "05": "cobra",
+  "06": "torcao-sentada",
+};
 
 export function Marcador({
   n,
