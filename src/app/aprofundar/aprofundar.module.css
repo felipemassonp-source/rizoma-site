@@ -139,3 +139,75 @@
 .calendario li small {
   font-size: 0.8rem;
 }
+
+/* Lista de espera rápida */
+.listaEspera {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border-radius: 28px;
+  background: var(--creme-claro);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 18%, transparent);
+}
+
+.listaEsperaTexto {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.listaEsperaTexto h3 {
+  font-size: var(--t-h3);
+}
+
+.listaEsperaTexto p {
+  max-width: 52ch;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.listaEsperaForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.listaEsperaForm input {
+  flex: 1 1 260px;
+  padding: 0.95em 1.35em;
+  border: 1.5px solid color-mix(in srgb, var(--fg) 32%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.listaEsperaForm input::placeholder {
+  color: inherit;
+  opacity: 0.6;
+}
+
+.listaEsperaOk {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--terracota) 12%, transparent);
+  font-size: var(--t-corpo);
+}
+
+.listaEsperaOk small {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.listaEsperaAlt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+  font-size: 0.92rem;
+  font-weight: 500;
+}

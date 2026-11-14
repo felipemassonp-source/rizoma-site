@@ -4,7 +4,6 @@ import { Entrada } from "@/components/inicio/Entrada";
 import { BoneDestaque } from "@/components/inicio/BoneDestaque";
 import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { Revelar } from "@/components/movimento/Revelar";
-import { FotoFatiada } from "@/components/movimento/FotoFatiada";
 import { SombraSol } from "@/components/sombra/SombraSol";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
@@ -65,6 +64,10 @@ export default function Inicio() {
               </a>
               <RespireComAGente />
             </div>
+            <p className={s.heroInfo} data-surge>
+              Você fala direto com a Maira no WhatsApp <i aria-hidden="true">·</i> venha com roupa confortável{" "}
+              <i aria-hidden="true">·</i> tapetes inclusos
+            </p>
           </div>
 
           <SombraSol id="lotus" className={s.heroSombra} />
@@ -76,23 +79,20 @@ export default function Inicio() {
         </p>
       </section>
 
-      {/* 2 · Manifesto — por que Rizoma */}
-      <RedeRizoma />
-
-      {/* 3 · Corpo · Reflexão · Autonomia */}
+      {/* 2 · Corpo · Reflexão · Autonomia */}
       <section className={s.pilares} data-tema="terracota">
         <div className="container">
           <div className={s.pilaresGrade}>
             {pilares.map((p, i) => (
               <article key={p.titulo} className={s.pilar} style={{ marginTop: `${i * 6}vw` }}>
                 {i === 0 ? (
-                  <FotoFatiada src={p.foto} alt={p.alt} className={s.pilarFoto} sizes="(min-width: 900px) 30vw, 90vw" />
+                  <Revelar src={p.foto} alt={p.alt} className={s.pilarFoto} sizes="(min-width: 900px) 30vw, 90vw" />
                 ) : (
                   <Revelar
                     src={p.foto}
                     alt={p.alt}
                     className={s.pilarFoto}
-                    recorte={i === 1 ? "circulo" : "montanha"}
+                    recorte={i === 1 ? "circulo" : "reto"}
                     sizes="(min-width: 900px) 30vw, 90vw"
                   />
                 )}
@@ -107,7 +107,40 @@ export default function Inicio() {
         </div>
       </section>
 
-      {/* 4 · Pausa — um momento de silêncio */}
+      {/* 3 · Praticar — as aulas, elevadas para acesso rápido */}
+      <section className={s.praticar} data-tema="creme" id="praticar">
+        <div className="container">
+          <Marcador n="01" nome="Praticar" href="/praticar" rotuloLink="Horários e valores" />
+          <div className={s.praticarTopo}>
+            <p className={s.praticarFatos}>
+              Horários flexíveis <i aria-hidden="true">·</i> até 10 pessoas por aula <i aria-hidden="true">·</i> sem
+              experiência prévia <i aria-hidden="true">·</i> tapetes inclusos
+            </p>
+          </div>
+          <PraticarLista />
+          <div className={s.praticarRodape}>
+            <div>
+              <p>Experimente uma aula e sinta se o Rizoma é pra você.</p>
+              <span className={s.praticarSub}>
+                Agendamento simples pelo WhatsApp direto com a professora.
+              </span>
+            </div>
+            <div className={s.praticarBotoes}>
+              <a href={AGENDAR} target="_blank" rel="noreferrer" className="botao">
+                Agendar aula experimental <span className="seta">→</span>
+              </a>
+              <Link href="/praticar" className="botao botao--contorno">
+                Ver horários e valores
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 · Manifesto — por que Rizoma */}
+      <RedeRizoma />
+
+      {/* 5 · Pausa — um momento de silêncio */}
       <FotoCheia
         src="/fotos/silhueta-sol.webp"
         alt="Silhueta de Maira numa postura de abertura sobre a pedra, contra o sol se pondo no mar"
@@ -122,26 +155,6 @@ export default function Inicio() {
           <cite className={s.pausaAutora}>Maira Lopes · professora e idealizadora</cite>
         </Surgir>
       </FotoCheia>
-
-      {/* 5 · Praticar — as aulas, deslizando para os lados */}
-      <section className={s.praticar} data-tema="creme">
-        <div className="container">
-          <Marcador n="01" nome="Praticar" href="/praticar" rotuloLink="Horários e valores" />
-          <div className={s.praticarTopo}>
-            <p className={s.praticarFatos}>
-              Horários flexíveis <i aria-hidden="true">·</i> até 10 pessoas por aula <i aria-hidden="true">·</i> sem
-              experiência prévia <i aria-hidden="true">·</i> tapetes inclusos
-            </p>
-          </div>
-          <PraticarLista />
-          <div className={s.praticarRodape}>
-            <p>Experimente uma aula e sinta se o Rizoma é pra você.</p>
-            <Link href="/praticar" className="botao">
-              Ver horários e valores <span className="seta">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* 6 · Origem — a praia foi o primeiro estúdio */}
       <section className={s.origem} data-tema="claro">

@@ -1,0 +1,129 @@
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  gap: 0.5rem 2rem;
+  padding-block: clamp(1.4rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 760px) {
+  .item {
+    grid-template-columns: 4rem 1.1fr 1fr;
+    align-items: baseline;
+  }
+}
+
+/* a linha de cima se desenha da esquerda para a direita */
+.linha {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1.5px;
+  background: color-mix(in srgb, var(--fg) 25%, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s var(--ease-respira);
+}
+
+.item:last-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
+.numero {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--destaque);
+  color: var(--destaque);
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+  transition: opacity 0.6s var(--ease-sai) 0.2s, transform 0.9s var(--ease-sai) 0.2s, background-color 0.5s var(--ease-sai),
+    color 0.5s var(--ease-sai);
+}
+
+.titulo {
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  transition: transform 0.7s var(--ease-sai), color 0.5s var(--ease-sai);
+}
+
+.mascara {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+}
+
+.palavra {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.9s var(--ease-sai) calc(0.3s + var(--k) * 0.08s);
+}
+
+.texto {
+  max-width: 40ch;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s var(--ease-sai) 0.55s, transform 0.8s var(--ease-sai) 0.55s;
+}
+
+.item[data-visivel="true"] .linha {
+  transform: scaleX(1);
+}
+
+.item[data-visivel="true"] .numero {
+  opacity: 1;
+  transform: none;
+}
+
+.item[data-visivel="true"] .palavra {
+  transform: none;
+}
+
+.item[data-visivel="true"] .texto {
+  opacity: 0.9;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .item:hover .titulo {
+    transform: translateX(0.6rem);
+    color: var(--destaque);
+  }
+
+  .item:hover .numero {
+    background: var(--destaque);
+    color: var(--bg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linha,
+  .numero,
+  .palavra,
+  .texto {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}

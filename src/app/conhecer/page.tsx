@@ -3,7 +3,8 @@ import { Revelar } from "@/components/movimento/Revelar";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
 import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
-import { sobre, principios, contato, linkWhatsApp } from "@/content/site";
+import { sobre, contato, linkWhatsApp } from "@/content/site";
+import { Principios } from "@/components/pagina/Principios";
 import s from "../paginas.module.css";
 
 export const metadata = { title: "Conhecer" };
@@ -18,8 +19,8 @@ export default function Conhecer() {
         sobretitulo="Conhecer · a escola"
         titulo={["Prática corporal,", "reflexão crítica,", "compromisso social."]}
         lead={<p>{sobre.escola[0]}</p>}
-        foto="/fotos/prece-retrato.webp"
-        fotoAlt="Maira de olhos fechados, mãos em prece, ao entardecer"
+        foto="/fotos/maira-sorrindo.webp"
+        fotoAlt="Maira sorrindo na praia ao entardecer, com o cabelo solto"
       />
 
       {/* A escola + princípios */}
@@ -31,15 +32,7 @@ export default function Conhecer() {
               <p>{sobre.escola[1]}</p>
             </Surgir>
           </div>
-          <Surgir as="ul" filhos className={s.linhasLista}>
-            {principios.map((p, i) => (
-              <li key={p.titulo}>
-                <span className={s.n}>0{i + 1}</span>
-                <strong>{p.titulo}</strong>
-                <span>{p.texto}</span>
-              </li>
-            ))}
-          </Surgir>
+          <Principios />
         </div>
       </section>
 
@@ -79,8 +72,8 @@ export default function Conhecer() {
       <section className={s.secao} data-tema="claro" id="maira">
         <div className={`container ${s.duas}`}>
           <div className={s.retratos}>
-            <Revelar src="/fotos/maira-sorrindo.webp" alt="Maira sorrindo na praia ao entardecer" className={s.retratoA} recorte="circulo" sizes="(min-width: 900px) 25vw, 50vw" />
-            <Revelar src="/fotos/aguia-pb.webp" alt="Maira na postura da águia, em preto e branco, com o mar ao fundo" className={s.retratoB} recorte="vertical" sizes="(min-width: 900px) 20vw, 45vw" />
+            <Revelar src="/fotos/corrida-medalha.webp" alt="Maira sorrindo e mostrando a medalha depois de uma maratona de 42 km" className={s.retratoA} recorte="circulo" posicao="50% 25%" sizes="(min-width: 900px) 25vw, 50vw" />
+            <Revelar src="/fotos/corrida-calcadao.webp" alt="Maira correndo no calçadão da Armação, com o mar e o morro ao fundo" className={s.retratoB} recorte="vertical" sizes="(min-width: 900px) 20vw, 45vw" />
           </div>
           <div style={{ display: "grid", gap: "1.75rem" }}>
             <p className="sobretitulo">Quem conduz</p>

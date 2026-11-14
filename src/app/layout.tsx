@@ -43,11 +43,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* decide antes da pintura se a abertura deve aparecer */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "try{if(sessionStorage.getItem(\"rz-abertura\")===\"1\"||matchMedia(\"(prefers-reduced-motion: reduce)\").matches)document.documentElement.dataset.abertura=\"fim\"}catch(e){}",
+            __html: "try{if(localStorage.getItem(\"rz-abertura\")===\"1\"||sessionStorage.getItem(\"rz-abertura\")===\"1\"||matchMedia(\"(prefers-reduced-motion: reduce)\").matches)document.documentElement.dataset.abertura=\"fim\"}catch(e){}",
           }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <a href="#conteudo" className="visualmente-oculto">
           Pular para o conteúdo
         </a>

@@ -1,7 +1,6 @@
 import { CabecaPagina, SeloExemplo } from "@/components/pagina/Pagina";
 import { GradeHorarios } from "@/components/pagina/GradeHorarios";
 import { Revelar } from "@/components/movimento/Revelar";
-import { FotoFatiada } from "@/components/movimento/FotoFatiada";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
 import { modalidades, planos, perguntas, linkWhatsApp } from "@/content/site";
 import s from "../paginas.module.css";
@@ -68,13 +67,13 @@ export default function Praticar() {
             {modalidades.map((m, i) => (
               <article key={m.id} id={m.id} className={p.modalidade} data-invertida={i % 2 === 1}>
                 {i === 2 ? (
-                  <FotoFatiada src={m.foto} alt="" className={p.modalidadeFoto} sizes="(min-width: 900px) 45vw, 90vw" />
+                  <Revelar src={m.foto} alt="" className={p.modalidadeFoto} sizes="(min-width: 900px) 45vw, 90vw" />
                 ) : (
                   <Revelar
                     src={m.foto}
                     alt=""
                     className={p.modalidadeFoto}
-                    recorte={(["montanha", "arco", "reto", "circulo"] as const)[i % 4]}
+                    recorte={(["reto", "arco", "reto", "circulo"] as const)[i % 4]}
                     sizes="(min-width: 900px) 45vw, 90vw"
                   />
                 )}

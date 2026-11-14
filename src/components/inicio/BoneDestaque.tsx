@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { produtoDestaque } from "@/content/site";
-import { Simbolo } from "../Logo";
+import { BoneMockup } from "../loja/BoneMockup";
 import { Pendente } from "../Pendente";
 import styles from "./BoneDestaque.module.css";
 
@@ -13,8 +13,8 @@ export function BoneDestaque() {
   const [cor, setCor] = useState(produtoDestaque.cores[1]);
   return (
     <div className={styles.bone}>
-      <div className={styles.vitrine} style={{ background: cor.hex }} data-cursor>
-        <Simbolo className={styles.simbolo} />
+      <div className={styles.vitrine} data-cursor>
+        <BoneMockup cor={cor.hex} className={styles.mockup} rotulo={`Boné Respira na cor ${cor.nome}`} />
         <span className={styles.nomeCor}>{cor.nome}</span>
       </div>
 
@@ -46,7 +46,7 @@ export function BoneDestaque() {
           </Link>
         </div>
 
-        <Pendente>fotos reais do boné e dados das camisetas (preço, cores e tamanhos).</Pendente>
+        <Pendente>fotos reais do boné (a imagem é uma ilustração) e dados das camisetas (preço, cores e tamanhos).</Pendente>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { CabecaPagina, SeloExemplo } from "@/components/pagina/Pagina";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
 import { Pendente } from "@/components/Pendente";
+import { ListaEsperaForm } from "@/components/aprofundar/ListaEsperaForm";
 import { formacao, linkWhatsApp } from "@/content/site";
 import s from "../paginas.module.css";
 import a from "./aprofundar.module.css";
@@ -125,11 +126,7 @@ export default function Aprofundar() {
             </ol>
           </div>
 
-          <div className={s.acoes} style={{ marginTop: "2.5rem" }}>
-            <a className="botao" href={LISTA} target="_blank" rel="noreferrer">
-              Entrar na lista de espera <span className="seta">→</span>
-            </a>
-          </div>
+          <ListaEsperaForm linkWhatsApp={LISTA} />
         </div>
       </section>
     </>

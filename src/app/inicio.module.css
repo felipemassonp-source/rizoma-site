@@ -88,6 +88,19 @@
   gap: 1rem 1.75rem;
 }
 
+.heroInfo {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.45;
+  opacity: 0.82;
+}
+
+.heroInfo i {
+  font-style: normal;
+  color: var(--terracota);
+  padding-inline: 0.25em;
+}
+
 .heroFoto {
   justify-self: end;
   width: 100%;
@@ -845,6 +858,19 @@
   line-height: 1.15;
 }
 
+.praticarSub {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+  opacity: 0.8;
+}
+
+.praticarBotoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 @media (max-width: 899px) {
   .praticarTopo .praticarFatos {
     text-align: left;
@@ -856,9 +882,21 @@
   width: min(100%, 480px) !important;
 }
 
+/* celular: a sombra vem antes do título, como um emblema, e o texto encosta nela */
 @media (max-width: 899px) {
+  .heroGrade {
+    gap: 1.25rem;
+  }
+
   .heroSombra {
+    order: -1;
     justify-self: start;
-    width: min(80%, 320px) !important;
+    width: min(58%, 230px) !important;
+    margin-bottom: -0.25rem;
+  }
+
+  .hero {
+    padding-top: 5.5rem !important;
+    justify-content: flex-start;
   }
 }

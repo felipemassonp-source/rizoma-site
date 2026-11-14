@@ -602,3 +602,8 @@
   margin-inline: -1.5rem;
   background: var(--creme-claro);
 }
+
+.mockup {
+  width: 86%;
+  height: auto;
+}

@@ -24,7 +24,9 @@ export function Abertura() {
     if (!el) return;
     let jaViu = false;
     try {
-      jaViu = sessionStorage.getItem("rz-abertura") === "1";
+      jaViu =
+        localStorage.getItem("rz-abertura") === "1" ||
+        sessionStorage.getItem("rz-abertura") === "1";
     } catch {}
     if (jaViu || prefereMenosMovimento()) {
       setAtiva(false);
@@ -51,6 +53,7 @@ export function Abertura() {
 
     const fim = () => {
       try {
+        localStorage.setItem("rz-abertura", "1");
         sessionStorage.setItem("rz-abertura", "1");
       } catch {}
       document.documentElement.dataset.abertura = "fim";
@@ -60,17 +63,17 @@ export function Abertura() {
     };
 
     const tl = gsap.timeline({ onComplete: fim });
-    tl.fromTo(linhas, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut", stagger: 0.035 })
-      .to(estado, { a: 1, duration: 1.1, ease: "sine.inOut", onUpdate: atualizar }, 0.7)
-      .fromTo(simbolo, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out", stagger: 0.1 }, 0.9)
-      .to(estado, { a: 0, duration: 0.7, ease: "sine.inOut", onUpdate: atualizar }, 1.9)
-      .to(`.${styles.linhas}, .${styles.simbolo}`, { opacity: 0, duration: 0.5 }, 2.2)
+    tl.fromTo(linhas, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut", stagger: 0.02 })
+      .to(estado, { a: 1, duration: 0.65, ease: "sine.inOut", onUpdate: atualizar }, 0.4)
+      .fromTo(simbolo, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.55, ease: "power2.out", stagger: 0.06 }, 0.5)
+      .to(estado, { a: 0, duration: 0.45, ease: "sine.inOut", onUpdate: atualizar }, 1.15)
+      .to(`.${styles.linhas}, .${styles.simbolo}`, { opacity: 0, duration: 0.35 }, 1.35)
       .to(faixas, {
         yPercent: (i) => (i % 2 ? 101 : -101),
-        duration: 1.1,
+        duration: 0.75,
         ease: "power3.inOut",
-        stagger: { each: 0.04, from: "center" },
-      }, 2.25);
+        stagger: { each: 0.025, from: "center" },
+      }, 1.4);
 
     const pular = () => tl.progress(1);
     el.addEventListener("click", pular);

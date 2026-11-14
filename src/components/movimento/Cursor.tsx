@@ -16,8 +16,8 @@ export function Cursor() {
       el.style.display = "none";
       return;
     }
-    const x = gsap.quickTo(el, "x", { duration: 0.9, ease: "power3.out" });
-    const y = gsap.quickTo(el, "y", { duration: 0.9, ease: "power3.out" });
+    const x = gsap.quickTo(el, "x", { duration: 0.28, ease: "power3.out" });
+    const y = gsap.quickTo(el, "y", { duration: 0.28, ease: "power3.out" });
     const mover = (e: PointerEvent) => {
       el.style.opacity = "1";
       x(e.clientX);

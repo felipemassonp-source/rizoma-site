@@ -9,6 +9,8 @@ import { navegacao, contato, linkWhatsApp } from "@/content/site";
 import { getLenis, prefereMenosMovimento } from "./movimento/Movimento";
 import styles from "./Cabecalho.module.css";
 
+const AGENDAR = linkWhatsApp("Olá, Maira! Vim pelo site e quero agendar uma aula experimental no Rizoma.");
+
 export function Cabecalho() {
   const caminho = usePathname();
   const [aberto, setAberto] = useState(false);
@@ -93,20 +95,31 @@ export function Cabecalho() {
           ))}
         </nav>
 
-        <button
-          className={styles.botaoMenu}
-          onClick={() => setAberto((v) => !v)}
-          aria-expanded={aberto}
-          aria-controls="menu-principal"
-        >
-          <span className={styles.botaoTexto}>{aberto ? "Fechar" : "Menu"}</span>
-          <span className={styles.icone} aria-hidden="true">
-            <Simbolo className={styles.iconeSimbolo} />
-            <svg className={styles.iconeFechar} viewBox="0 0 24 24">
-              <path d="M4 4 L20 20 M20 4 L4 20" />
-            </svg>
-          </span>
-        </button>
+        <div className={styles.acoesDireita}>
+          <a
+            href={AGENDAR}
+            target="_blank"
+            rel="noreferrer"
+            className={`botao ${styles.ctaCabecalho}`}
+          >
+            Agendar aula <span className="seta">→</span>
+          </a>
+
+          <button
+            className={styles.botaoMenu}
+            onClick={() => setAberto((v) => !v)}
+            aria-expanded={aberto}
+            aria-controls="menu-principal"
+          >
+            <span className={styles.botaoTexto}>{aberto ? "Fechar" : "Menu"}</span>
+            <span className={styles.icone} aria-hidden="true">
+              <Simbolo className={styles.iconeSimbolo} />
+              <svg className={styles.iconeFechar} viewBox="0 0 24 24">
+                <path d="M4 4 L20 20 M20 4 L4 20" />
+              </svg>
+            </span>
+          </button>
+        </div>
       </header>
 
       <div id="menu-principal" ref={menuRef} className={styles.menu} aria-hidden={!aberto} inert={!aberto}>
@@ -128,13 +141,24 @@ export function Cabecalho() {
         </nav>
 
         <div className={styles.rodapeMenu}>
-          <a href={linkWhatsApp("Olá! Vim pelo site do Rizoma.")} target="_blank" rel="noreferrer">
-            WhatsApp {contato.whatsappExibicao}
+          <a
+            href={AGENDAR}
+            target="_blank"
+            rel="noreferrer"
+            className={`botao ${styles.ctaMenu}`}
+            onClick={() => setAberto(false)}
+          >
+            Agendar aula experimental <span className="seta">→</span>
           </a>
-          <a href={`https://instagram.com/${contato.instagram}`} target="_blank" rel="noreferrer">
-            @{contato.instagram}
-          </a>
-          <span>Armação · Florianópolis</span>
+          <div className={styles.rodapeLinks}>
+            <a href={linkWhatsApp("Olá! Vim pelo site do Rizoma.")} target="_blank" rel="noreferrer">
+              WhatsApp {contato.whatsappExibicao}
+            </a>
+            <a href={`https://instagram.com/${contato.instagram}`} target="_blank" rel="noreferrer">
+              @{contato.instagram}
+            </a>
+            <span>Armação · Florianópolis</span>
+          </div>
         </div>
       </div>
     </>

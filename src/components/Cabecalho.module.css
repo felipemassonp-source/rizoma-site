@@ -72,6 +72,30 @@
   transform-origin: left;
 }
 
+.acoesDireita {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.ctaCabecalho {
+  padding: 0.65em 1.2em;
+  font-size: 0.84rem;
+}
+
+.cabecalho[data-aberto="true"] .ctaCabecalho {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 560px) {
+  .ctaCabecalho {
+    display: none;
+  }
+}
+
 .botaoMenu {
   position: relative;
   z-index: 2;
@@ -192,14 +216,25 @@
 
 .rodapeMenu {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 2rem;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
   font-size: 0.9rem;
   opacity: 0;
 }
 
-.rodapeMenu a {
+.ctaMenu {
+  --b-bg: var(--creme);
+  --b-fg: var(--vinho);
+}
+
+.rodapeLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+
+.rodapeLinks a {
   border-bottom: 1px solid color-mix(in srgb, currentColor 40%, transparent);
 }
 

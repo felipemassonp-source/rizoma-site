@@ -12,6 +12,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { produtos, pagamentos, entregas, contato, type Produto } from "@/content/site";
 import { Simbolo } from "../Logo";
+import { BoneMockup } from "./BoneMockup";
 import { getLenis } from "../movimento/Movimento";
 import styles from "./Loja.module.css";
 
@@ -38,6 +39,13 @@ function travarRolagem(travar: boolean) {
 /* ---------- Foto do produto (ou espaço reservado) ---------- */
 function FotoProduto({ p, cor, grande = false }: { p: Produto; cor?: string; grande?: boolean }) {
   const hex = p.cores.find((c) => c.nome === cor)?.hex ?? p.cores[0].hex;
+  if (p.id === "bone-respira") {
+    return (
+      <div className={styles.semFoto} style={{ background: "var(--creme-claro)" }}>
+        <BoneMockup cor={hex} className={styles.mockup} rotulo={`${p.nome} na cor ${cor ?? p.cores[0].nome}`} />
+      </div>
+    );
+  }
   if (p.foto) {
     return <Image src={p.foto} alt={p.nome} fill sizes={grande ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 30vw, 50vw"} />;
   }

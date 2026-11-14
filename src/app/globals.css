@@ -73,7 +73,8 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
-  transition: background-color 0.7s ease-out, color 0.7s ease-out;
+  /* a cor acompanha a rolagem diretamente (ver Movimento.tsx) */
+  transition: none;
 }
 
 img,
@@ -202,6 +203,10 @@ h3 {
   color: var(--creme);
 }
 
+.botao:active {
+  transform: scale(0.97);
+}
+
 .botao--contorno {
   --b-bg: transparent;
   --b-fg: var(--fg);
@@ -272,15 +277,15 @@ h3 {
 }
 
 .cursor-vivo[data-ativo="true"] {
-  background: color-mix(in srgb, var(--destaque) 35%, transparent);
+  background: color-mix(in srgb, var(--destaque) 28%, transparent);
   border-color: var(--destaque);
-  scale: 3;
-  transition: opacity 0.4s, scale 0.6s var(--ease-sai), background-color 0.5s var(--ease-sai);
+  scale: 2.2;
+  transition: opacity 0.25s, scale 0.35s var(--ease-sai), background-color 0.35s var(--ease-sai);
 }
 
 .cursor-vivo {
   scale: 1;
-  transition: opacity 0.4s, scale 0.6s var(--ease-sai), border-color 0.7s ease-out, background-color 0.5s var(--ease-sai);
+  transition: opacity 0.25s, scale 0.35s var(--ease-sai), border-color 0.42s ease-out, background-color 0.35s var(--ease-sai);
 }
 
 @keyframes cursor-respira {
