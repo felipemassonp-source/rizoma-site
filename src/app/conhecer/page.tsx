@@ -72,8 +72,21 @@ export default function Conhecer() {
       <section className={s.secao} data-tema="claro" id="maira">
         <div className={`container ${s.duas}`}>
           <div className={s.retratos}>
-            <Revelar src="/fotos/corrida-medalha.webp" alt="Maira sorrindo e mostrando a medalha depois de uma maratona de 42 km" className={s.retratoA} recorte="circulo" posicao="50% 25%" sizes="(min-width: 900px) 25vw, 50vw" />
-            <Revelar src="/fotos/corrida-calcadao.webp" alt="Maira correndo no calçadão da Armação, com o mar e o morro ao fundo" className={s.retratoB} recorte="vertical" sizes="(min-width: 900px) 20vw, 45vw" />
+            <Revelar
+              src="/fotos/invertida-pernas.webp"
+              alt="Maira em postura invertida sobre a cabeça na areia da praia, com o mar e o céu azul ao fundo"
+              className={s.retratoA}
+              recorte="arco"
+              posicao="50% 45%"
+              sizes="(min-width: 900px) 38vw, 90vw"
+            />
+            <Revelar
+              src="/fotos/ponte-praia.webp"
+              alt="Maira na postura da ponte na areia da praia, com o mar e as montanhas ao fundo"
+              className={s.retratoB}
+              posicao="50% 45%"
+              sizes="(min-width: 900px) 38vw, 90vw"
+            />
           </div>
           <div style={{ display: "grid", gap: "1.75rem" }}>
             <p className="sobretitulo">Quem conduz</p>

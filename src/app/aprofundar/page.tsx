@@ -60,7 +60,7 @@ export default function Aprofundar() {
               <li
                 key={m.n}
                 className={a.modulo}
-                style={{ ["--i" as string]: i, background: CORES[i], color: i % 3 === 0 ? "var(--vinho)" : "var(--creme)" }}
+                style={{ ["--i" as string]: i, background: CORES[i], color: i % 3 === 0 ? "var(--vinho)" : "var(--creme-claro)" }}
               >
                 <span className={a.moduloN}>Módulo {m.n}</span>
                 <h3>{m.titulo}</h3>

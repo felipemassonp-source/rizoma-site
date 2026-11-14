@@ -231,7 +231,7 @@ export const respira = {
   ],
   contextos: ["Empresas", "Escolas e universidades", "Coletivos", "Eventos públicos ou privados"],
   frase: "Respira é um convite. À pausa. Ao encontro. Ao corpo presente no mundo.",
-  foto: "/fotos/respira-praia.webp",
+  foto: "/fotos/respira-calcadao.webp",
 };
 
 export const projetos = [

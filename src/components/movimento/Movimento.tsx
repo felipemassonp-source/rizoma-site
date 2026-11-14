@@ -80,52 +80,21 @@ export function Movimento() {
         }, 450)
       : 0;
 
-    // Cor do fundo contínua: entre uma seção e a seguinte, as cores se misturam
-    // aos poucos conforme a rolagem (sem troca de uma vez).
+    // Troca fluida de tema por seção (garante 100% de contraste mesmo se parar no meio da rolagem)
     const secoes = Array.from(document.querySelectorAll<HTMLElement>("[data-tema]"));
-    const temaDe = (el: HTMLElement): Tema => {
-      const t = (el.dataset.tema as Tema) || "creme";
-      return document.documentElement.dataset.leituraNoturna === "true" && t === "claro" ? "vinhoLeitura" : t;
-    };
-    const raiz = document.documentElement;
-    const pintar = (de: Tema, para: Tema, p: number) => {
-      const A = TEMAS[de] ?? TEMAS.creme;
-      const B = TEMAS[para] ?? TEMAS.creme;
-      raiz.style.setProperty("--bg", gsap.utils.interpolate(A.bg, B.bg, p));
-      raiz.style.setProperty("--fg", gsap.utils.interpolate(A.fg, B.fg, p));
-      raiz.style.setProperty("--destaque", gsap.utils.interpolate(A.destaque, B.destaque, p));
-      raiz.dataset.tema = p < 0.5 ? de : para;
-    };
+    if (secoes.length) aplicarTema((secoes[0].dataset.tema as Tema) || "creme");
 
-    const gatilhos: ScrollTrigger[] = [];
-    const recalcular = () => {
-      if (!secoes.length) return;
-      let j = -1;
-      for (let i = gatilhos.length - 1; i >= 0; i--) {
-        if (gatilhos[i].progress > 0) {
-          j = i;
-          break;
-        }
-      }
-      if (j < 0) return pintar(temaDe(secoes[0]), temaDe(secoes[0]), 0);
-      const p = gatilhos[j].progress;
-      pintar(temaDe(secoes[j]), temaDe(secoes[j + 1]), gsap.parseEase("sine.inOut")(p));
-    };
-
-    for (let i = 1; i < secoes.length; i++) {
-      gatilhos.push(
-        ScrollTrigger.create({
-          trigger: secoes[i],
-          start: "top 90%",
-          end: "top 35%",
-          // calculado depois das seções fixadas (pin), para não sair desalinhado
-          refreshPriority: -1,
-          onUpdate: recalcular,
-          onRefresh: recalcular,
-        }),
-      );
-    }
-    recalcular();
+    const gatilhos = secoes.map((secao) =>
+      ScrollTrigger.create({
+        trigger: secao,
+        start: "top 58%",
+        end: "bottom 58%",
+        refreshPriority: -1,
+        onToggle: (self) => {
+          if (self.isActive) aplicarTema((secao.dataset.tema as Tema) || "creme");
+        },
+      }),
+    );
 
     ScrollTrigger.sort();
     const id = window.setTimeout(() => ScrollTrigger.refresh(), 120);

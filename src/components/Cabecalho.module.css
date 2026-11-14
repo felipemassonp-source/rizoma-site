@@ -8,8 +8,8 @@
   gap: 2rem;
   padding: 1.1rem var(--gutter);
   color: var(--fg);
-  transition: transform 0.9s var(--ease-respira), color 0.7s ease-out,
-    background-color 0.7s ease-out, padding 0.9s var(--ease-respira);
+  transition: transform 0.9s var(--ease-respira), color 0.38s ease-out,
+    background-color 0.38s ease-out, padding 0.6s var(--ease-respira);
 }
 
 .cabecalho[data-rolou="true"] {
@@ -103,6 +103,17 @@
 
   .ctaCabecalho :global(.seta) {
     display: none;
+  }
+}
+
+/* telas bem estreitas: o botão do menu fica só com o símbolo */
+@media (max-width: 420px) {
+  .botaoTexto {
+    display: none;
+  }
+
+  .logo {
+    width: 96px;
   }
 }
 

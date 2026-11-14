@@ -17,7 +17,6 @@
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  transition: background-color 0.7s ease-out, color 0.7s ease-out;
 }
 
 .nome {
@@ -60,8 +59,7 @@
 .nome {
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 1s var(--ease-sai), transform 1s var(--ease-sai), background-color 0.7s ease-out,
-    color 0.7s ease-out;
+  transition: opacity 1s var(--ease-sai), transform 1s var(--ease-sai);
 }
 
 .nome {
@@ -120,7 +118,6 @@
   aspect-ratio: 1;
   margin-left: -0.35rem;
   color: var(--destaque);
-  transition: color 0.7s ease-out;
 }
 
 @media (max-width: 600px) {

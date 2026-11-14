@@ -68,8 +68,9 @@
 .mascara {
   display: inline-block;
   overflow: hidden;
-  vertical-align: top;
+  vertical-align: bottom;
   padding-bottom: 0.08em;
+  margin-right: 0.24em;
 }
 
 .palavra {

@@ -104,6 +104,7 @@ export function Cabecalho() {
             onClick={() => setAberto((v) => !v)}
             aria-expanded={aberto}
             aria-controls="menu-principal"
+            aria-label={aberto ? "Fechar menu" : "Abrir menu"}
           >
             <span className={styles.botaoTexto}>{aberto ? "Fechar" : "Menu"}</span>
             <span className={styles.icone} aria-hidden="true">

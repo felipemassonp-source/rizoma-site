@@ -135,18 +135,21 @@
 .retratos {
   position: relative;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 1rem;
-  align-items: center;
+  gap: 1.25rem;
+  align-content: start;
 }
 
 .retratoA {
   width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 4.4;
+  border-radius: 999px 999px 28px 28px;
 }
 
 .retratoB {
-  width: 78%;
-  justify-self: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 28px;
 }
 
 .credenciais {
@@ -173,9 +176,10 @@
 .conceitoLinhas {
   position: absolute;
   inset: auto 0 0 0;
-  height: 30%;
+  height: calc(var(--secao) * 0.75);
   color: var(--terracota);
   opacity: 0.4;
+  pointer-events: none;
 }
 
 .galeria {

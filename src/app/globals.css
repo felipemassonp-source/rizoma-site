@@ -73,8 +73,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
-  /* a cor acompanha a rolagem diretamente (ver Movimento.tsx) */
-  transition: none;
+  transition: background-color 0.38s ease-out, color 0.38s ease-out;
 }
 
 img,

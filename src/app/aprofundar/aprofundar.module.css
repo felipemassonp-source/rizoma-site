@@ -30,17 +30,18 @@
 
 .modulo {
   position: sticky;
-  top: calc(6rem + var(--i) * 1.4rem);
+  top: calc(4.8rem + var(--i) * 0.85rem);
   display: grid;
   gap: 1rem;
-  min-height: clamp(260px, 42vh, 380px);
-  padding: clamp(1.75rem, 4vw, 3.25rem);
+  min-height: clamp(220px, 36vh, 360px);
+  padding: clamp(1.5rem, 4vw, 3.25rem);
   border-radius: 32px;
   box-shadow: 0 -12px 40px rgb(58 11 11 / 0.12);
 }
 
 @media (min-width: 900px) {
   .modulo {
+    top: calc(6rem + var(--i) * 1.35rem);
     grid-template-columns: 1fr 1.4fr;
     align-content: start;
   }

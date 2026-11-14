@@ -155,11 +155,13 @@ export default function Inicio() {
         </div>
         <div className={`container ${s.origemGrade}`}>
           <Revelar
-            src="/fotos/guerreiro-por-do-sol.webp"
-            alt="Maira em postura do guerreiro na beira do mar da Armação, ao entardecer"
+            src="/fotos/ponte-praia.webp"
+            alt="Maira na postura da ponte, com o corpo em arco sobre a areia da praia, o mar e as montanhas ao fundo"
             className={s.origemFoto}
+            posicao="50% 45%"
             faixas={7}
-            profundidade={12}
+            profundidade={6}
+            sizes="(min-width: 900px) 50vw, 100vw"
           />
           <div className={s.origemTexto}>
             <TextoRespira
@@ -253,9 +255,11 @@ export default function Inicio() {
               />
             </div>
             <Revelar
-              src="/fotos/respira-praia.webp"
-              alt="Maira conduzindo uma prática aberta do Movimento Respira na praia, com barcos ao fundo"
+              src="/fotos/respira-calcadao.webp"
+              alt="Prática aberta do Movimento Respira no calçadão da Armação, com dezenas de pessoas praticando diante do mar"
               className={s.sociedadeFoto}
+              posicao="60% 58%"
+              profundidade={6}
               sizes="(min-width: 900px) 40vw, 90vw"
             />
           </div>

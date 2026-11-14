@@ -35,7 +35,14 @@ export default function Sociedade() {
                 ))}
               </Surgir>
             </div>
-            <Revelar src="/fotos/respira-praia.webp" alt="Prática aberta do Movimento Respira na praia da Armação" className={so.respiraFoto} />
+            <Revelar
+              src="/fotos/respira-calcadao.webp"
+              alt="Prática aberta do Movimento Respira no calçadão da Armação, com dezenas de pessoas em postura de equilíbrio diante do mar e a bandeira do Respira ao fundo"
+              className={so.respiraFoto}
+              posicao="60% 58%"
+              profundidade={6}
+              sizes="(min-width: 900px) 50vw, 100vw"
+            />
           </div>
 
           <div className={so.contexto}>

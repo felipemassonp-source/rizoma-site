@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { LinhasRespirando } from "../movimento/LinhasRespirando";
 import { Entrada } from "../inicio/Entrada";
 import { SombraSol } from "../sombra/SombraSol";
 import styles from "./Pagina.module.css";
@@ -26,9 +25,6 @@ export function CabecaPagina({
 }) {
   return (
     <section className={styles.cabeca} data-tema={tema} data-com-foto={Boolean(foto || sombra)}>
-      <div className={styles.linhas} aria-hidden="true">
-        <LinhasRespirando linhas={7} amplitude={1} centro={0.72} espessura={2} seguirCursor desenharAoEntrar />
-      </div>
       <Entrada className={`container ${styles.grade}`}>
         <div className={styles.texto}>
           <p className="sobretitulo" data-surge>
