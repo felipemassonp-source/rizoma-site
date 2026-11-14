@@ -18,7 +18,7 @@ export default function Aprofundar() {
         titulo={["Do tapetinho à", "compreensão, do", "corpo à reflexão."]}
         lead={<p>{formacao.intro}</p>}
         tema="terracota"
-        sombra="lotus"
+        sombra="torcao"
         foto="/fotos/escorpiao-estudio.webp"
         fotoAlt="Maira numa postura invertida sobre os antebraços, no estúdio"
       />

@@ -5,6 +5,7 @@ import { BoneDestaque } from "@/components/inicio/BoneDestaque";
 import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { Revelar } from "@/components/movimento/Revelar";
 import { FotoFatiada } from "@/components/movimento/FotoFatiada";
+import { SombraSol } from "@/components/sombra/SombraSol";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
 import { RespireComAGente } from "@/components/movimento/RespireComAGente";
@@ -66,15 +67,7 @@ export default function Inicio() {
             </div>
           </div>
 
-          <div className={s.heroFoto} data-surge>
-            <Revelar
-              src="/fotos/meditacao-por-do-sol.webp"
-              alt="Maira meditando em lótus ao pôr do sol, com o mar e o morro da Armação ao fundo"
-              priority
-              faixas={8}
-              sizes="(min-width: 900px) 40vw, 90vw"
-            />
-          </div>
+          <SombraSol id="lotus" className={s.heroSombra} />
         </Entrada>
 
         <p className={s.rolar} aria-hidden="true">

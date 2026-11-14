@@ -850,3 +850,15 @@
     text-align: left;
   }
 }
+
+.heroSombra {
+  justify-self: end;
+  width: min(100%, 480px) !important;
+}
+
+@media (max-width: 899px) {
+  .heroSombra {
+    justify-self: start;
+    width: min(80%, 320px) !important;
+  }
+}

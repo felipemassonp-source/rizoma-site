@@ -11,7 +11,9 @@ import { useEffect, useRef } from "react";
 import { Sombra } from "../sombra/Sombra";
 import styles from "./Marcador.module.css";
 
-const ROTACAO = ["guerreiro", "lua", "lotus", "arvore", "cobra", "pombo", "roda"];
+// Posturas que não aparecem em nenhum outro lugar do site (cada página tem a sua).
+// Só alguns marcadores levam sombra, para não repetir nem poluir.
+const POR_MARCADOR: Record<string, string> = { "01": "roda", "03": "prancha-lateral", "05": "cobra" };
 
 export function Marcador({
   n,
@@ -26,7 +28,7 @@ export function Marcador({
   rotuloLink?: string;
   sombra?: string;
 }) {
-  const pose = sombra ?? ROTACAO[(parseInt(n, 10) - 1 + ROTACAO.length) % ROTACAO.length];
+  const pose = sombra ?? POR_MARCADOR[n];
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,7 +56,7 @@ export function Marcador({
           <path d="M0 6 H88 L92 2 L96 10 L100 6" pathLength={1} />
         </svg>
       </span>
-      <Sombra id={pose} className={styles.sombra} />
+      {pose && <Sombra id={pose} className={styles.sombra} />}
       {href && (
         <Link href={href} className={styles.link}>
           {rotuloLink} <span aria-hidden="true">→</span>
