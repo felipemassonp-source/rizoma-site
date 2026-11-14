@@ -21,7 +21,7 @@ const ehDesktop = () => window.matchMedia("(min-width: 900px) and (pointer: fine
 
 export function PraticarLista() {
   const router = useRouter();
-  const [aberta, setAberta] = useState<number | null>(0);
+  const [aberta, setAberta] = useState<number | null>(null);
 
   return (
     <ul className={styles.lista}>

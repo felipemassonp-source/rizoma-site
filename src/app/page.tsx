@@ -29,10 +29,6 @@ export default function Inicio() {
     <>
       {/* 1 · Topo — o primeiro fôlego */}
       <section className={s.hero} data-tema="creme">
-        <div className={s.heroLinhas} aria-hidden="true">
-          <LinhasRespirando linhas={12} amplitude={1.1} centro={0.62} espessura={3} seguirCursor desenharAoEntrar />
-        </div>
-
         <Entrada className={`container ${s.heroGrade}`}>
           <div className={s.heroTexto}>
             <p className="sobretitulo" data-surge>
