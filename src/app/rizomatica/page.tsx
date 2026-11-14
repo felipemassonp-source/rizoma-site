@@ -2,6 +2,7 @@ import { textos } from "@/content/site";
 import { Entrada } from "@/components/inicio/Entrada";
 import { ListaTextos } from "@/components/rizomatica/ListaTextos";
 import { Newsletter } from "@/components/rizomatica/Newsletter";
+import { FraseRespiro } from "@/components/movimento/Texto";
 import { SombraSol } from "@/components/sombra/SombraSol";
 import styles from "@/components/rizomatica/Rizomatica.module.css";
 
@@ -16,11 +17,7 @@ export default function Rizomatica() {
           <p className="sobretitulo" data-surge>
             Textos e newsletter da Maira
           </p>
-          <h1 className={styles.marca}>
-            <span data-linha>
-              <span>Rizomática</span>
-            </span>
-          </h1>
+          <FraseRespiro as="h1" className={styles.marca} linhas={["Rizomática"]} imediato />
           </div>
           <div className={styles.aberturaTexto} data-surge>
             <SombraSol id="pombo" className={styles.aberturaSombra} />

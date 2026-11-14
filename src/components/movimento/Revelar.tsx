@@ -26,6 +26,11 @@ type Props = {
   posicao?: string;
   /** recorte inspirado na marca */
   recorte?: "reto" | "arco" | "arcoInvertido" | "montanha" | "circulo" | "vertical";
+  /**
+   * como a foto entra. Se não for dado, segue o recorte:
+   * círculo → "iris" (abre do centro), arco → "nasce" (sobe como sol), o resto → "faixas".
+   */
+  entrada?: "faixas" | "iris" | "nasce";
 };
 
 export function Revelar({
@@ -38,7 +43,9 @@ export function Revelar({
   profundidade = 8,
   posicao = "center",
   recorte = "reto",
+  entrada,
 }: Props) {
+  const modo = entrada ?? (recorte === "circulo" ? "iris" : recorte === "arco" ? "nasce" : "faixas");
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,7 +55,19 @@ export function Revelar({
       return;
     }
     const ctx = gsap.context(() => {
-      gsap.fromTo(
+      if (modo === "iris") {
+        gsap.fromTo(
+          `.${styles.camada}`,
+          { clipPath: "circle(0% at 50% 50%)" },
+          { clipPath: "circle(75% at 50% 50%)", duration: 1.6, ease: "power3.inOut", scrollTrigger: { trigger: el, start: "top 90%" } },
+        );
+      } else if (modo === "nasce") {
+        gsap.fromTo(
+          `.${styles.camada}`,
+          { clipPath: "inset(100% 0% 0% 0%)" },
+          { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "power4.inOut", scrollTrigger: { trigger: el, start: "top 90%" } },
+        );
+      } else gsap.fromTo(
         `.${styles.faixa}`,
         { scaleY: 1 },
         {
@@ -77,7 +96,7 @@ export function Revelar({
       }
     }, el);
     return () => ctx.revert();
-  }, [profundidade]);
+  }, [profundidade, modo]);
 
   return (
     <div ref={ref} className={`${styles.moldura} ${className ?? ""}`} data-recorte={recorte}>
@@ -92,11 +111,13 @@ export function Revelar({
           style={{ objectPosition: posicao }}
         />
       </div>
-      <div className={styles.faixas} aria-hidden="true">
-        {Array.from({ length: faixas }).map((_, i) => (
-          <span key={i} className={styles.faixa} style={{ transformOrigin: i % 2 ? "top" : "bottom" }} />
-        ))}
-      </div>
+      {modo === "faixas" && (
+        <div className={styles.faixas} aria-hidden="true">
+          {Array.from({ length: faixas }).map((_, i) => (
+            <span key={i} className={styles.faixa} style={{ transformOrigin: i % 2 ? "top" : "bottom" }} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -6,9 +6,9 @@ import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { Revelar } from "@/components/movimento/Revelar";
 import { SombraSol } from "@/components/sombra/SombraSol";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
-import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
+import { Surgir, TextoRespira, Contador } from "@/components/movimento/Surgir";
+import { FraseRespiro } from "@/components/movimento/Texto";
 import { RespireComAGente } from "@/components/movimento/RespireComAGente";
-import { RedeRizoma } from "@/components/inicio/RedeRizoma";
 import { PraticarLista } from "@/components/inicio/PraticarLista";
 import { PresidioPontos } from "@/components/inicio/PresidioPontos";
 import { Marcador } from "@/components/inicio/Marcador";
@@ -132,23 +132,18 @@ export default function Inicio() {
         </div>
       </section>
 
-      {/* 4 · Manifesto — por que Rizoma */}
-      <RedeRizoma />
-
       {/* 5 · Pausa — um momento de silêncio */}
       <FotoCheia
         src="/fotos/silhueta-sol.webp"
         alt="Silhueta de Maira numa postura de abertura sobre a pedra, contra o sol se pondo no mar"
         posicao="35% 60%"
       >
-        <Surgir className={s.pausaConteudo}>
-          <blockquote className={s.pausaFrase}>
-            Mais do que posturas,
-            <br />
-            <span>buscamos sentido.</span>
-          </blockquote>
-          <cite className={s.pausaAutora}>Maira Lopes · professora e idealizadora</cite>
-        </Surgir>
+        <div className={s.pausaConteudo}>
+          <FraseRespiro as="blockquote" className={s.pausaFrase} linhas={["Mais do que posturas,", "buscamos sentido."]} realce={[1]} />
+          <Surgir atraso={1.4}>
+            <cite className={s.pausaAutora}>Maira Lopes · professora e idealizadora</cite>
+          </Surgir>
+        </div>
       </FotoCheia>
 
       {/* 6 · Origem — a praia foi o primeiro estúdio */}
@@ -173,7 +168,7 @@ export default function Inicio() {
               texto="A praia foi o primeiro estúdio."
               destaques={["praia"]}
             />
-            <Surgir filhos className={s.origemCorpo}>
+            <Surgir filhos jeito="lento" className={s.origemCorpo}>
               <p className={s.origemData}>Maio de 2021 · calçadão da Armação</p>
               <p>
                 As primeiras aulas em Florianópolis foram para uma aluna, com um tapetinho e o mar como sala de prática.
@@ -220,11 +215,11 @@ export default function Inicio() {
             </p>
             <dl className={s.formacaoFatos}>
               <div>
-                <dt>60h</dt>
+                <dt><Contador valor="60h" /></dt>
                 <dd>presenciais</dd>
               </div>
               <div>
-                <dt>6</dt>
+                <dt><Contador valor={6} /></dt>
                 <dd>módulos</dd>
               </div>
               <div>
@@ -298,7 +293,7 @@ export default function Inicio() {
           <Marcador n="06" nome="Rizomática" href="/rizomatica" rotuloLink="Todos os textos" />
           <div className={s.rizomaticaTopo}>
             <div>
-              <h2 className={s.h2}>Os textos da Maira, para ler sem pressa.</h2>
+              <TextoRespira as="h2" className={s.h2} texto="Os textos da Maira, para ler sem pressa." destaques={["Maira,"]} />
             </div>
             <p className={s.rizomaticaIntro}>
               A Rizomática é o espaço de escrita da Maira, onde o ioga encontra a filosofia, a sociedade e o cotidiano.
@@ -307,7 +302,7 @@ export default function Inicio() {
             </p>
           </div>
 
-          <Surgir>
+          <Surgir jeito="abre">
             <Link href={`/rizomatica/${textoExemplo.slug}`} className={s.texto} data-cursor>
               <div className={s.textoCapa}>
                 <Image src={textoExemplo.capa} alt="" fill sizes="(min-width: 900px) 45vw, 90vw" />

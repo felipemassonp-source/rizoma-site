@@ -13,6 +13,7 @@ import { createPortal } from "react-dom";
 import { produtos, pagamentos, entregas, contato, type Produto } from "@/content/site";
 import { Simbolo } from "../Logo";
 import { getLenis } from "../movimento/Movimento";
+import { Surgir } from "../movimento/Surgir";
 import styles from "./Loja.module.css";
 
 type Item = { id: string; produtoId: string; cor: string; tamanho: string; qtd: number };
@@ -101,7 +102,7 @@ export function Loja() {
         </button>
       </div>
 
-      <ul className={styles.vitrine}>
+      <Surgir as="ul" filhos jeito="abre" className={styles.vitrine}>
         {lista.map((p, i) => (
           <li key={p.id} className={styles.card} data-largo={i % 5 === 0}>
             <button className={styles.cardBotao} onClick={() => setAberto(p)} disabled={p.esgotado}>
@@ -125,7 +126,7 @@ export function Loja() {
             </button>
           </li>
         ))}
-      </ul>
+      </Surgir>
 
       {montado &&
         aberto &&

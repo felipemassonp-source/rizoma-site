@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CabecaPagina, FotoFaltando, SeloExemplo } from "@/components/pagina/Pagina";
 import { Revelar } from "@/components/movimento/Revelar";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
+import { FraseRespiro } from "@/components/movimento/Texto";
 import { PresidioPontos } from "@/components/inicio/PresidioPontos";
 import { respira, projetos, agenda, contato, linkWhatsApp } from "@/content/site";
 import s from "../paginas.module.css";
@@ -89,7 +90,11 @@ export default function Sociedade() {
               </a>
             </div>
           </div>
-          <p className={so.frase}>{respira.frase}</p>
+          <FraseRespiro
+            className={so.frase}
+            linhas={["Respira é um convite.", "À pausa. Ao encontro.", "Ao corpo presente no mundo."]}
+            realce={[2]}
+          />
         </div>
       </section>
 
@@ -134,7 +139,7 @@ export default function Sociedade() {
           <div className={s.topoSecao}>
             <div>
               <p className="sobretitulo">Agenda</p>
-              <h2 className={s.h2}>Próximas ações abertas.</h2>
+              <TextoRespira as="h2" className={s.h2} texto="Próximas ações abertas." destaques={["abertas."]} />
             </div>
             <div style={{ display: "grid", gap: "1rem", justifyItems: "start" }}>
               <p className={s.lead}>Atividades gratuitas, em espaços públicos. Não é preciso experiência.</p>

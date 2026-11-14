@@ -3,6 +3,7 @@ import { CabecaPagina, FotoFaltando } from "@/components/pagina/Pagina";
 import { Revelar } from "@/components/movimento/Revelar";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
+import { FraseRespiro } from "@/components/movimento/Texto";
 import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { sobre, contato, linkWhatsApp } from "@/content/site";
 import { Principios } from "@/components/pagina/Principios";
@@ -49,7 +50,7 @@ export default function Conhecer() {
               <p className="sobretitulo">O Rizoma</p>
               <TextoRespira as="h2" className={s.h2} texto="Um ioga que também pensa." destaques={["pensa."]} />
             </div>
-            <Surgir filhos className={s.corpo}>
+            <Surgir filhos jeito="lento" className={s.corpo}>
               {sobre.escola.map((t) => (
                 <p key={t.slice(0, 20)}>{t}</p>
               ))}
@@ -81,9 +82,7 @@ export default function Conhecer() {
           </div>
           <div style={{ display: "grid", gap: "1.75rem" }}>
             <p className="sobretitulo">Quem conduz</p>
-            <h2 className={s.h2} style={{ marginTop: 0 }}>
-              {maira.nome}
-            </h2>
+            <TextoRespira as="h2" className={s.h2} style={{ marginTop: 0 }} texto={maira.nome} />
             <Surgir filhos className={s.corpo}>
               {maira.bio.map((t) => (
                 <p key={t.slice(0, 20)}>{t}</p>
@@ -111,9 +110,7 @@ export default function Conhecer() {
           <FotoFaltando legenda="Retrato da Taili" />
           <div style={{ display: "grid", gap: "1.25rem", alignContent: "start" }}>
             <p className="sobretitulo">Também conduz</p>
-            <h2 className={s.h2} style={{ marginTop: 0 }}>
-              {taili.nome}
-            </h2>
+            <TextoRespira as="h2" className={s.h2} style={{ marginTop: 0 }} texto={taili.nome} />
             <p className={s.lead}>
               Professora do Rizoma, conduz aulas em grupo às segundas, terças, quartas e quintas.
             </p>
@@ -166,9 +163,7 @@ export default function Conhecer() {
 
       {/* Pausa: uma foto de praia de ponta a ponta */}
       <FotoCheia src="/fotos/agachada-por-do-sol.webp" alt="Silhueta de Maira numa postura agachada, com o braço erguido, contra o sol se pondo no mar" posicao="45% 55%">
-        <p style={{ fontSize: "var(--t-h1)", lineHeight: 0.98, letterSpacing: "-0.035em", maxWidth: "12ch", fontWeight: 500 }}>
-          Presença e observação. Ação e silêncio.
-        </p>
+        <FraseRespiro className={s.fraseFoto} linhas={["Presença e observação.", "Ação e silêncio."]} realce={[1]} />
         <p style={{ marginTop: "1rem", fontSize: "var(--t-mini)", fontWeight: 600, letterSpacing: "0.3em", textTransform: "uppercase" }}>
           Do Manual da Marca do Rizoma
         </p>

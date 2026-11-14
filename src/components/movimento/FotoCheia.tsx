@@ -4,6 +4,8 @@
  * Foto de ponta a ponta da tela, para as imagens de praia mais bonitas.
  * A foto se abre de uma faixa estreita até ocupar tudo (expandir, como
  * a inspiração) e o texto fica por cima, com um véu escuro para leitura.
+ * Com `pausa`, a foto fica parada na tela por um tempo enquanto se rola:
+ * um momento de respiro, em que a frase tem tempo de chegar.
  */
 
 import Image from "next/image";
@@ -21,12 +23,14 @@ export function FotoCheia({
   posicao = "center",
   children,
   tema = "vinho",
+  pausa = true,
 }: {
   src: string;
   alt: string;
   posicao?: string;
   children?: ReactNode;
   tema?: "vinho" | "terracota";
+  pausa?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
 
@@ -53,14 +57,16 @@ export function FotoCheia({
   }, []);
 
   return (
-    <section ref={ref} className={styles.cheia} data-tema={tema}>
-      <div className={styles.janela}>
-        <div className={styles.imagem}>
-          <Image src={src} alt={alt} fill sizes="100vw" style={{ objectFit: "cover", objectPosition: posicao }} />
+    <section ref={ref} className={styles.cheia} data-tema={tema} data-pausa={pausa}>
+      <div className={styles.palco}>
+        <div className={styles.janela}>
+          <div className={styles.imagem}>
+            <Image src={src} alt={alt} fill sizes="100vw" style={{ objectFit: "cover", objectPosition: posicao }} />
+          </div>
+          <div className={styles.veu} aria-hidden="true" />
         </div>
-        <div className={styles.veu} aria-hidden="true" />
+        {children && <div className={`container ${styles.conteudo}`}>{children}</div>}
       </div>
-      {children && <div className={`container ${styles.conteudo}`}>{children}</div>}
     </section>
   );
 }

@@ -277,7 +277,7 @@
   letter-spacing: -0.035em;
 }
 
-.pausaFrase span {
+.pausaFrase [data-realce] {
   color: var(--terracota);
 }
 

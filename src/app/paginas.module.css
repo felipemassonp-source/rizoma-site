@@ -120,6 +120,15 @@
 }
 
 /* Conhecer */
+/* frase-respiro sobre foto cheia */
+.fraseFoto {
+  max-width: 12ch;
+  font-size: var(--t-h1);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
 .citacao {
   margin: 0;
   font-size: var(--t-h2);

@@ -2,6 +2,7 @@ import { CabecaPagina, SeloExemplo } from "@/components/pagina/Pagina";
 import { GradeHorarios } from "@/components/pagina/GradeHorarios";
 import { Revelar } from "@/components/movimento/Revelar";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
+import { FraseRespiro, Sequencia } from "@/components/movimento/Texto";
 import { modalidades, planos, perguntas, linkWhatsApp } from "@/content/site";
 import s from "../paginas.module.css";
 import p from "./praticar.module.css";
@@ -48,11 +49,11 @@ export default function Praticar() {
           <div className={s.topoSecao}>
             <div>
               <p className="sobretitulo">Como é uma aula</p>
-              <TextoRespira as="h2" className={s.h2} texto="Uma hora, cinco tempos." destaques={["cinco"]} />
+              <FraseRespiro as="h2" className={s.h2} linhas={["Uma hora,", "cinco tempos."]} realce={[1]} />
             </div>
             <p className={s.lead}>Não seguimos um estilo fixo de ioga. Cada aula tem tema e propósito, e passa por cinco momentos.</p>
           </div>
-          <Surgir as="ol" filhos className={p.etapas}>
+          <Sequencia className={p.etapas}>
             {ETAPAS.map((e, i) => (
               <li key={e.nome} style={{ ["--i" as string]: i }}>
                 <div className={p.etapaGesto}>
@@ -62,7 +63,7 @@ export default function Praticar() {
                 </div>
               </li>
             ))}
-          </Surgir>
+          </Sequencia>
         </div>
       </section>
 
@@ -111,7 +112,7 @@ export default function Praticar() {
           <div className={s.topoSecao}>
             <div>
               <p className="sobretitulo">Horários</p>
-              <h2 className={s.h2}>Escolha seu horário de referência.</h2>
+              <TextoRespira as="h2" className={s.h2} texto="Escolha seu horário de referência." destaques={["referência."]} />
             </div>
             <div style={{ display: "grid", gap: "1rem", justifyItems: "start" }}>
               <p className={s.lead}>
@@ -130,14 +131,14 @@ export default function Praticar() {
           <div className={s.topoSecao}>
             <div>
               <p className="sobretitulo">Valores</p>
-              <h2 className={s.h2}>Sugerimos pelo menos 3 meses contínuos.</h2>
+              <TextoRespira as="h2" className={s.h2} texto="Sugerimos pelo menos 3 meses contínuos." destaques={["contínuos."]} />
             </div>
             <div style={{ display: "grid", gap: "1rem", justifyItems: "start" }}>
               <p className={s.lead}>É o tempo para perceber os benefícios mais profundos da prática.</p>
               <SeloExemplo>Valores de exemplo: preços fictícios</SeloExemplo>
             </div>
           </div>
-          <Surgir filhos className={p.planos}>
+          <Surgir filhos jeito="abre" className={p.planos}>
             {planos.itens.map((pl) => (
               <article key={pl.nome} className={p.plano} data-destaque={pl.destaque}>
                 {pl.destaque && <span className={p.planoSelo}>mais indicado</span>}
@@ -166,7 +167,7 @@ export default function Praticar() {
         <div className={`container ${s.duas}`}>
           <div>
             <p className="sobretitulo">Perguntas</p>
-            <h2 className={s.h2}>Antes da primeira aula.</h2>
+            <TextoRespira as="h2" className={s.h2} texto="Antes da primeira aula." />
           </div>
           <div className={p.faq}>
             {perguntas.map((q) => (

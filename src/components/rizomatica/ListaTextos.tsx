@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import type { Texto } from "@/content/site";
 import { Simbolo } from "../Logo";
+import { Surgir } from "../movimento/Surgir";
 import styles from "./Rizomatica.module.css";
 
 const CORES = [
@@ -46,7 +47,7 @@ export function ListaTextos({ textos }: { textos: Texto[] }) {
         </Link>
       )}
 
-      <ul className={styles.capas}>
+      <Surgir as="ul" filhos jeito="lento" className={styles.capas}>
         {resto.map((t, i) => {
           const c = CORES[i % CORES.length];
           return (
@@ -64,7 +65,7 @@ export function ListaTextos({ textos }: { textos: Texto[] }) {
             </li>
           );
         })}
-      </ul>
+      </Surgir>
     </>
   );
 }

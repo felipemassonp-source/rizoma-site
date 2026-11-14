@@ -1,5 +1,5 @@
 import { CabecaPagina, SeloExemplo } from "@/components/pagina/Pagina";
-import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
+import { Surgir, TextoRespira, Contador } from "@/components/movimento/Surgir";
 import { Pendente } from "@/components/Pendente";
 import { ListaEsperaForm } from "@/components/aprofundar/ListaEsperaForm";
 import { formacao, linkWhatsApp } from "@/content/site";
@@ -47,7 +47,7 @@ export default function Aprofundar() {
             <dl className={a.fatos}>
               {formacao.fatos.map((f) => (
                 <div key={f.rotulo}>
-                  <dt>{f.valor}</dt>
+                  <dt><Contador valor={f.valor} /></dt>
                   <dd>{f.rotulo}</dd>
                 </div>
               ))}
@@ -62,7 +62,7 @@ export default function Aprofundar() {
           <div className={s.topoSecao}>
             <div>
               <p className="sobretitulo">O percurso</p>
-              <h2 className={s.h2}>Seis módulos, um sábado por mês.</h2>
+              <TextoRespira as="h2" className={s.h2} texto="Seis módulos, um sábado por mês." destaques={["sábado"]} />
             </div>
             <p className={s.lead}>Role devagar: cada módulo se assenta sobre o anterior, como camadas de prática.</p>
           </div>
@@ -117,7 +117,7 @@ export default function Aprofundar() {
           <div className={s.topoSecao}>
             <div>
               <p className="sobretitulo">Próxima turma</p>
-              <h2 className={s.h2}>Datas em breve.</h2>
+              <TextoRespira as="h2" className={s.h2} texto="Datas em breve." />
             </div>
             <div style={{ display: "grid", gap: "1rem", justifyItems: "start" }}>
               <Pendente>a turma anunciada no site atual começou em abril de 2026. Faltam as datas da próxima turma.</Pendente>

@@ -96,9 +96,28 @@ export function Movimento() {
       }),
     );
 
+    // Etiquetas (sobretítulos): o traço se desenha e as letras se afastam ao entrar na tela
+    let io: IntersectionObserver | null = null;
+    if (!prefereMenosMovimento()) {
+      const etiquetas = Array.from(document.querySelectorAll<HTMLElement>(".sobretitulo"));
+      etiquetas.forEach((e) => (e.dataset.abre = "false"));
+      io = new IntersectionObserver(
+        (entradas) =>
+          entradas.forEach((en) => {
+            if (en.isIntersecting) {
+              (en.target as HTMLElement).dataset.abre = "true";
+              io?.unobserve(en.target);
+            }
+          }),
+        { rootMargin: "0px 0px -8% 0px" },
+      );
+      etiquetas.forEach((e) => io!.observe(e));
+    }
+
     ScrollTrigger.sort();
     const id = window.setTimeout(() => ScrollTrigger.refresh(), 120);
     return () => {
+      io?.disconnect();
       window.clearTimeout(id);
       window.clearTimeout(idAncora);
       gatilhos.forEach((g) => g.kill());
