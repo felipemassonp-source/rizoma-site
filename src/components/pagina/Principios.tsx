@@ -39,9 +39,11 @@ export function Principios() {
           <span className={styles.numero}>0{i + 1}</span>
           <strong className={styles.titulo}>
             {p.titulo.split(" ").map((palavra, k) => (
-              <span key={k} className={styles.mascara}>
-                <span className={styles.palavra} style={{ ["--k" as string]: k }}>
-                  {palavra}
+              <span key={k}>
+                <span className={styles.mascara}>
+                  <span className={styles.palavra} style={{ ["--k" as string]: k }}>
+                    {palavra}
+                  </span>
                 </span>{" "}
               </span>
             ))}
