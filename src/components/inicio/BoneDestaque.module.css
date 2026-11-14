@@ -16,7 +16,7 @@
   place-items: center;
   aspect-ratio: 1;
   border-radius: 50%;
-  transition: background-color 1.2s var(--ease-respira);
+  transition: background-color 0.7s ease-out;
   animation: vitrine-respira 10s var(--ease-respira) infinite;
 }
 

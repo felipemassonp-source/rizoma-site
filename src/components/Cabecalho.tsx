@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Logo } from "./Logo";
+import { Logo, Simbolo } from "./Logo";
 import { navegacao, contato, linkWhatsApp } from "@/content/site";
 import { getLenis, prefereMenosMovimento } from "./movimento/Movimento";
 import styles from "./Cabecalho.module.css";
@@ -42,12 +42,6 @@ export function Cabecalho() {
         .timeline({ paused: true })
         .set(el, { visibility: "visible" })
         .fromTo(el, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 0.9, ease: "power3.inOut" })
-        .fromTo(
-          `.${styles.linha}`,
-          { strokeDashoffset: 1 },
-          { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut", stagger: 0.12 },
-          0.3,
-        )
         .fromTo(
           `.${styles.item}`,
           { yPercent: 110 },
@@ -106,26 +100,16 @@ export function Cabecalho() {
           aria-controls="menu-principal"
         >
           <span className={styles.botaoTexto}>{aberto ? "Fechar" : "Menu"}</span>
-          <svg className={styles.icone} viewBox="0 0 32 20" aria-hidden="true">
-            <path d="M0 2 H32" />
-            <path d="M0 10 L10 10 L16 13 L22 10 H32" />
-            <path d="M0 18 L9 18 L16 13 L23 18 H32" />
-          </svg>
+          <span className={styles.icone} aria-hidden="true">
+            <Simbolo className={styles.iconeSimbolo} />
+            <svg className={styles.iconeFechar} viewBox="0 0 24 24">
+              <path d="M4 4 L20 20 M20 4 L4 20" />
+            </svg>
+          </span>
         </button>
       </header>
 
       <div id="menu-principal" ref={menuRef} className={styles.menu} aria-hidden={!aberto} inert={!aberto}>
-        <svg className={styles.linhas} viewBox="0 0 400 900" preserveAspectRatio="none" aria-hidden="true">
-          {[0, 1, 2, 3].map((i) => (
-            <path
-              key={i}
-              className={styles.linha}
-              pathLength={1}
-              d={`M${60 + i * 70} 0 V${380 + i * 30} L${10 + i * 40} ${560 + i * 20} L${60 + i * 70} ${740 + i * 10} V900`}
-            />
-          ))}
-        </svg>
-
         <nav className={styles.lista} aria-label="Menu">
           {navegacao.map((item, i) => (
             <Link

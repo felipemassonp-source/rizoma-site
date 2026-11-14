@@ -8,8 +8,8 @@
   gap: 2rem;
   padding: 1.1rem var(--gutter);
   color: var(--fg);
-  transition: transform 0.9s var(--ease-respira), color 1.2s var(--ease-respira),
-    background-color 1.2s var(--ease-respira), padding 0.9s var(--ease-respira);
+  transition: transform 0.9s var(--ease-respira), color 0.7s ease-out,
+    background-color 0.7s ease-out, padding 0.9s var(--ease-respira);
 }
 
 .cabecalho[data-rolou="true"] {
@@ -86,36 +86,43 @@
 }
 
 .icone {
-  width: 32px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 22px;
+}
+
+.iconeSimbolo,
+.iconeFechar {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s var(--ease-sai), transform 0.6s var(--ease-sai);
+}
+
+.iconeFechar {
+  width: 20px;
   height: 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
-  overflow: visible;
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.6);
 }
 
-.icone path {
-  transition: d 0.8s var(--ease-respira);
+.botaoMenu:hover .iconeSimbolo {
+  transform: scaleY(1.15);
 }
 
-.botaoMenu:hover .icone path:nth-child(2) {
-  d: path("M0 10 L8 8 L16 14 L24 8 H32");
+.botaoMenu[aria-expanded="true"] .iconeSimbolo {
+  opacity: 0;
+  transform: scale(0.6);
 }
 
-.botaoMenu:hover .icone path:nth-child(3) {
-  d: path("M0 18 L7 15 L16 20 L25 15 H32");
-}
-
-.botaoMenu[aria-expanded="true"] .icone path:nth-child(1) {
-  d: path("M4 2 L28 18");
-}
-
-.botaoMenu[aria-expanded="true"] .icone path:nth-child(2) {
-  d: path("M16 10 L16 10 L16 10 L16 10 H16");
-}
-
-.botaoMenu[aria-expanded="true"] .icone path:nth-child(3) {
-  d: path("M4 18 L9 14 L16 10 L23 6 L28 2");
+.botaoMenu[aria-expanded="true"] .iconeFechar {
+  opacity: 1;
+  transform: none;
 }
 
 @media (min-width: 1100px) {
@@ -144,24 +151,6 @@
   clip-path: inset(0 0 100% 0);
 }
 
-.linhas {
-  position: absolute;
-  top: 0;
-  right: -2%;
-  width: min(52vw, 420px);
-  height: 100%;
-  fill: none;
-  stroke: var(--terracota);
-  stroke-width: 7;
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-.linha {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  vector-effect: non-scaling-stroke;
-}
 
 .lista {
   position: relative;

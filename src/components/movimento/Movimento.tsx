@@ -86,8 +86,8 @@ export function Movimento() {
     const gatilhos = secoes.map((secao) =>
       ScrollTrigger.create({
         trigger: secao,
-        start: "top 55%",
-        end: "bottom 55%",
+        start: "top 62%",
+        end: "bottom 62%",
         // calculado depois das seções fixadas (pin), para não sair desalinhado
         refreshPriority: -1,
         onToggle: (self) => {

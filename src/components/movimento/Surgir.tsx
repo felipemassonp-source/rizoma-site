@@ -35,15 +35,15 @@ export function Surgir({
     const alvos = filhos ? Array.from(el.children) : el;
     const tw = gsap.fromTo(
       alvos,
-      { y: 42, opacity: 0 },
+      { y: 26, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1.6,
+        duration: 0.9,
         delay: atraso,
         ease: "power3.out",
-        stagger: 0.14,
-        scrollTrigger: { trigger: el, start: "top 88%" },
+        stagger: 0.08,
+        scrollTrigger: { trigger: el, start: "top 96%" },
       },
     );
     return () => {
@@ -76,12 +76,12 @@ export function TextoRespira({
     const palavras = el.querySelectorAll("[data-palavra]");
     const tw = gsap.fromTo(
       palavras,
-      { opacity: 0.14 },
+      { opacity: 0.22 },
       {
         opacity: 1,
         ease: "none",
         stagger: 0.1,
-        scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: 0.8 },
+        scrollTrigger: { trigger: el, start: "top 95%", end: "top 68%", scrub: 0.3 },
       },
     );
     return () => {

@@ -53,16 +53,16 @@ export function Revelar({
         { scaleY: 1 },
         {
           scaleY: 0,
-          duration: 1.4,
+          duration: 1,
           ease: "power3.inOut",
           stagger: { each: 0.08, from: "center" },
-          scrollTrigger: { trigger: el, start: "top 82%" },
+          scrollTrigger: { trigger: el, start: "top 94%" },
         },
       );
       gsap.fromTo(
         `.${styles.imagem}`,
         { scale: 1.18 },
-        { scale: 1.04, duration: 2.2, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 82%" } },
+        { scale: 1.04, duration: 1.4, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 94%" } },
       );
       if (profundidade) {
         gsap.fromTo(

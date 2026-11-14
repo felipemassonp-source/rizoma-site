@@ -46,7 +46,7 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   white-space: nowrap;
-  transition: background-color 1.2s var(--ease-respira);
+  transition: background-color 0.7s ease-out;
 }
 
 .centro {

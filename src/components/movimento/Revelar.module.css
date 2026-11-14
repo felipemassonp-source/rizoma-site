@@ -27,7 +27,7 @@
   flex: 1;
   margin-block: -0.5px;
   background: var(--bg);
-  transition: background-color 1.2s var(--ease-respira);
+  transition: background-color 0.7s ease-out;
 }
 
 /* ---------- recortes da marca ---------- */
