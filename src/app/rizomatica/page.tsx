@@ -1,5 +1,4 @@
 import { textos } from "@/content/site";
-import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { Entrada } from "@/components/inicio/Entrada";
 import { ListaTextos } from "@/components/rizomatica/ListaTextos";
 import { Newsletter } from "@/components/rizomatica/Newsletter";
@@ -12,9 +11,6 @@ export default function Rizomatica() {
   return (
     <>
       <section className={styles.abertura} data-tema="claro">
-        <div className={styles.aberturaLinhas} aria-hidden="true">
-          <LinhasRespirando linhas={5} amplitude={0.8} centro={0.5} espessura={1.5} seguirCursor desenharAoEntrar />
-        </div>
         <Entrada className={`container ${styles.aberturaGrade}`}>
           <h1 className={styles.marca}>
             <span data-linha>
