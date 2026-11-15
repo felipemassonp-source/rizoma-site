@@ -138,7 +138,7 @@ export const modalidades = [
     resumo: "Prática ao ar livre, no calçadão da Armação, com o mar como sala de prática.",
     detalhe:
       "As aulas na praia acontecem pontualmente, principalmente no verão, no mesmo calçadão onde o Rizoma começou. Entre na lista de avisos para saber as próximas datas.",
-    foto: "/fotos/guerreiro-por-do-sol.webp",
+    foto: "/fotos/ioga-na-praia.webp",
     exemplo: false,
   },
   {
@@ -147,7 +147,7 @@ export const modalidades = [
     resumo: "Uma prática lenta, apoiada em almofadas e mantas, para o corpo descansar de verdade.",
     detalhe:
       "Posturas sustentadas por vários minutos, com apoio total do material, para acalmar o sistema nervoso e soltar tensões acumuladas. Indicado para quem está em fase de cansaço, estresse ou recuperação.",
-    foto: "/fotos/ponte-sala.webp",
+    foto: "/fotos/restaurativo.webp",
     exemplo: true,
   },
   {
@@ -163,6 +163,26 @@ export const modalidades = [
 
 /** Professoras que conduzem as aulas (a Maira é também a idealizadora). */
 export const professoras = ["Maira", "Taili"] as const;
+
+/** Apresentação curtinha de cada professora, no bloco "Quem dá as aulas" de Praticar. */
+export const perfisProfessoras: {
+  nome: (typeof professoras)[number];
+  resumo: string;
+  link?: { href: string; rotulo: string };
+  pendente?: string;
+}[] = [
+  {
+    nome: "Maira",
+    resumo:
+      "Idealizadora do Rizoma, ensina ioga há 10 anos. Formada em Ciências Sociais e mestre em Ciência Política, junta o tapete, a filosofia e as questões do nosso tempo.",
+    link: { href: "/conhecer#maira", rotulo: "Conhecer a Maira" },
+  },
+  {
+    nome: "Taili",
+    resumo: "Professora do Rizoma, conduz aulas em grupo às segundas, terças, quartas e quintas.",
+    pendente: "falta uma apresentação curta da Taili (formação e jeito de conduzir) e uma foto do rosto.",
+  },
+];
 
 /** Rostinho de cada professora na grade de horários (null = foto ainda não chegou). */
 export const rostos: Record<(typeof professoras)[number], string | null> = {

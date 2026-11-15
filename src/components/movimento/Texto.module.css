@@ -14,28 +14,6 @@
   will-change: transform;
 }
 
-/* traço em zigue-zague sob a palavra em destaque */
-.traco {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.1em;
-  width: 100%;
-  height: 0.16em;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.traco path {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-  stroke-dasharray: 1;
-}
-
 /* ---------- FraseRespiro: letra a letra, como inspirar e expirar ---------- */
 .frasePalavra {
   display: inline-block;

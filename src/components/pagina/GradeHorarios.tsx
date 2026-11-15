@@ -9,7 +9,7 @@ type Prof = (typeof professoras)[number];
 const filtros = ["Todas", ...professoras] as const;
 
 /** Rostinho redondo da professora. Sem foto: círculo tracejado com a inicial, guardando o lugar. */
-function Rosto({ nome, tamanho = "p" }: { nome: Prof; tamanho?: "p" | "m" | "g" }) {
+export function Rosto({ nome, tamanho = "p" }: { nome: Prof; tamanho?: "p" | "m" | "g" }) {
   const foto = rostos[nome];
   return (
     <span className={styles.rosto} data-tamanho={tamanho} data-sem-foto={!foto} title={foto ? nome : `${nome} (foto em breve)`}>

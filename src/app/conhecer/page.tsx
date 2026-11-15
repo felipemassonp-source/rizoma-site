@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CabecaPagina, FotoFaltando } from "@/components/pagina/Pagina";
 import { Revelar } from "@/components/movimento/Revelar";
 import { FotoCheia } from "@/components/movimento/FotoCheia";
@@ -7,7 +6,6 @@ import { FraseRespiro } from "@/components/movimento/Texto";
 import { LinhasRespirando } from "@/components/movimento/LinhasRespirando";
 import { sobre, contato, linkWhatsApp } from "@/content/site";
 import { Principios } from "@/components/pagina/Principios";
-import { Pendente } from "@/components/Pendente";
 import s from "../paginas.module.css";
 
 export const metadata = { title: "Conhecer" };
@@ -19,27 +17,26 @@ const AGENDAR = linkWhatsApp("Olá, Maira! Vim pelo site e quero agendar uma aul
  * o que é → quem conduz → onde fica → e, para quem quiser ir fundo, por que o nome.
  */
 export default function Conhecer() {
-  const { maira, taili, espaco } = sobre;
+  const { maira, espaco } = sobre;
   return (
     <>
       <CabecaPagina
         sobretitulo="Conhecer · a escola e a Maira"
-        titulo={["Uma escola,", "duas professoras,", "um bairro", "à beira‑mar."]}
+        titulo={["Uma escola de", "ioga no sul", "da ilha."]}
         lead={
           <p>
-            O Rizoma é uma escola de ioga na Armação, em Florianópolis, idealizada pela professora Maira Lopes, que
-            conduz as aulas ao lado da professora Taili. Aqui você conhece a proposta, quem dá as aulas e onde a escola
-            fica.
+            O Rizoma é uma escola de ioga na Armação, em Florianópolis, idealizada pela professora Maira Lopes. Aqui
+            você conhece a proposta, quem está à frente da escola e onde ela fica.
           </p>
         }
         indice={[
           { href: "#escola", rotulo: "O Rizoma" },
-          { href: "#maira", rotulo: "Quem conduz" },
+          { href: "#maira", rotulo: "A Maira" },
           { href: "#espaco", rotulo: "O espaço" },
           { href: "#conceito", rotulo: "Por que “Rizoma”" },
         ]}
-        foto="/fotos/maira-sorrindo.webp"
-        fotoAlt="Maira sorrindo na praia ao entardecer, com o cabelo solto"
+        foto="/fotos/espaco-sala.webp"
+        fotoAlt="A sala de prática do Rizoma ao entardecer, com tapetes e blocos arrumados e o morro visto pela janela"
       />
 
       {/* 1 · O que é o Rizoma + princípios */}
@@ -60,28 +57,21 @@ export default function Conhecer() {
         </div>
       </section>
 
-      {/* 2 · Quem conduz */}
+      {/* 2 · Quem está à frente: a Maira (uma foto só) */}
       <section className={s.secao} data-tema="claro" id="maira">
         <div className={`container ${s.duas}`}>
           <div className={s.retratos}>
             <Revelar
-              src="/fotos/invertida-pernas.webp"
-              alt="Maira em postura invertida sobre a cabeça na areia da praia, com o mar e o céu azul ao fundo"
+              src="/fotos/maira-sorrindo.webp"
+              alt="Maira sorrindo na praia ao entardecer, com o cabelo solto"
               className={s.retratoA}
               recorte="arco"
-              posicao="50% 45%"
-              sizes="(min-width: 900px) 38vw, 90vw"
-            />
-            <Revelar
-              src="/fotos/roda-praia.webp"
-              alt="Maira na postura da roda, com o corpo em arco na areia da praia"
-              className={s.retratoB}
-              posicao="50% 50%"
+              posicao="50% 30%"
               sizes="(min-width: 900px) 38vw, 90vw"
             />
           </div>
           <div style={{ display: "grid", gap: "1.75rem" }}>
-            <p className="sobretitulo">Quem conduz</p>
+            <p className="sobretitulo">Quem está à frente</p>
             <TextoRespira as="h2" className={s.h2} style={{ marginTop: 0 }} texto={maira.nome} />
             <Surgir filhos className={s.corpo}>
               {maira.bio.map((t) => (
@@ -102,22 +92,6 @@ export default function Conhecer() {
                 <span>UFSCar</span>
               </li>
             </ul>
-          </div>
-        </div>
-
-        {/* A segunda professora */}
-        <div className={`container ${s.duas}`} style={{ marginTop: "clamp(3.5rem, 8vw, 6rem)", alignItems: "center" }}>
-          <FotoFaltando legenda="Retrato da Taili" />
-          <div style={{ display: "grid", gap: "1.25rem", alignContent: "start" }}>
-            <p className="sobretitulo">Também conduz</p>
-            <TextoRespira as="h2" className={s.h2} style={{ marginTop: 0 }} texto={taili.nome} />
-            <p className={s.lead}>
-              Professora do Rizoma, conduz aulas em grupo às segundas, terças, quartas e quintas.
-            </p>
-            <Pendente>falta a apresentação da Taili (formação, trajetória e jeito de conduzir) e uma foto.</Pendente>
-            <Link className="botao botao--contorno" style={{ justifySelf: "start" }} href="/praticar#horarios">
-              Ver os horários de cada professora <span className="seta">→</span>
-            </Link>
           </div>
         </div>
       </section>

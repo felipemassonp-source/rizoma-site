@@ -1,5 +1,6 @@
 import { CabecaPagina, SeloExemplo } from "@/components/pagina/Pagina";
 import { GradeHorarios } from "@/components/pagina/GradeHorarios";
+import { Professoras } from "@/components/pagina/Professoras";
 import { Revelar } from "@/components/movimento/Revelar";
 import { Surgir, TextoRespira } from "@/components/movimento/Surgir";
 import { FraseRespiro, Sequencia } from "@/components/movimento/Texto";
@@ -116,11 +117,12 @@ export default function Praticar() {
             </div>
             <div style={{ display: "grid", gap: "1rem", justifyItems: "start" }}>
               <p className={s.lead}>
-                As aulas são conduzidas pela Maira e pela Taili. Os horários são flexíveis: sempre que precisar trocar,
-                é só avisar.
+                Os horários são flexíveis: você escolhe um horário de referência e, sempre que precisar trocar, é só
+                avisar.
               </p>
             </div>
           </div>
+          <Professoras />
           <GradeHorarios />
         </div>
       </section>

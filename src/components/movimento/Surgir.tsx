@@ -4,7 +4,7 @@
  * Pequenos movimentos de entrada, todos no ritmo da respiração.
  *  - <Surgir>: o bloco entra (três jeitos: "sobe", "abre" e "lento")
  *  - <TextoRespira>: títulos de seção — cada palavra sobe de trás de uma máscara
- *    e a palavra em destaque ganha o traço em zigue-zague do símbolo
+ *    (a palavra em destaque fica na cor de destaque)
  *  - <Contador>: números que crescem ao entrar na tela
  */
 
@@ -72,9 +72,6 @@ export function Surgir({
   );
 }
 
-/** Traço do símbolo: reto, dobra em zigue-zague e volta a ser reto. */
-const TRACO = "M0 6 H58 L64 2 L70 10 L76 2 L82 10 L88 6 H100";
-
 export function TextoRespira({
   texto,
   destaques = [],
@@ -93,13 +90,10 @@ export function TextoRespira({
     const el = ref.current;
     if (!el || prefereMenosMovimento()) return;
     const palavras = el.querySelectorAll(`.${t.palavraDentro}`);
-    const tracos = el.querySelectorAll(`.${t.traco} path`);
     // começa escondido aqui (e não no CSS) para o texto nunca sumir se o JS falhar
     gsap.set(palavras, { yPercent: 110 });
-    gsap.set(tracos, { strokeDashoffset: 1 });
     const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top 88%" } });
     tl.to(palavras, { yPercent: 0, duration: 1.1, ease: "power4.out", stagger: 0.055 });
-    if (tracos.length) tl.to(tracos, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut", stagger: 0.15 }, "-=0.35");
     return () => {
       tl.scrollTrigger?.kill();
       tl.kill();
@@ -119,11 +113,6 @@ export function TextoRespira({
             <span className={t.palavra} aria-hidden="true">
               <span className={t.palavraDentro} style={destaque ? { color: "var(--destaque)" } : undefined}>
                 {p}
-                {destaque && (
-                  <svg className={t.traco} viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
-                    <path d={TRACO} pathLength={1} />
-                  </svg>
-                )}
               </span>
             </span>{" "}
           </Fragment>
